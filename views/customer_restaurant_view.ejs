@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <%- include('partials/_headData') %>
+ <link rel="stylesheet" href="styles/customer.css">
+</head>
+<body>
+  <header>
+    <!-- for example -->
+    <div class="login">Logged in As Hungry Bill </div>
+    <div class="cart">Cart</div>
+  </header>
+  <main>
+<!-- search bar route will need to be updated with correct route -->
+<section id="search">
+  <form class="searchbar" action="/restaurants" method="GET" title="Restaurant Search">
+    <input type="text"
+    name="restaurant-search"
+    id="restaurant-search"
+    placeholder="Search Restaurants">
+    <button class="fa fa-search" type="submit"></button>
+  </form>
+  <img src="/assets/onion-ring" alt="onion ring man">
+</section>
+<section id="restaurant-listing">
+  <ul>
+    <li>Restaurant A</li>
+    <li>Restaurant B</li>
+    <li>Restaurant C</li>
+    <li>Restaurant D</li>
+  </ul>
+</section>
+</main>
+
+<footer>
+  <!-- this button doesn't need to be here? We aren't going to place any items on the order until we select a restaurant to order from?  Needs to be on the listing of the menu_items-->
+  <form action="/order" method="POST"></form>
+  <button name="Place Order" type="submit">Place Order</button>
+</footer>
+</body>
+</html>
