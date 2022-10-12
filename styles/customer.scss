@@ -2,7 +2,7 @@ ul {
   text-decoration: none;
   list-style: none;
   padding: 0;
-  font-size: x-large;
+  font-size: 32pt;
 
   li {
     padding: 2rem;
@@ -13,16 +13,17 @@ header {
   margin: 1rem;
   display: flex;
   justify-content: space-between;
+  font-size: 22pt;
 
 }
 
 main {
   margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  height: 90vh;
-  width: 90vw;
+  height: 100vmin;
+  width: 90vmin;
   flex-direction: row;
 }
 
