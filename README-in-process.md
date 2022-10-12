@@ -50,7 +50,7 @@ app.get('/login/:id', (req, res) => {
   - [ ] GET /customer/:id  : display a listing of restaurants to customers
   - [ ] (Future) SearchBar
   - [ ] GET /customer/menuItems/:id : display menu items (and current order)
-  - [ ] - PLACE ORDER button notifies owner SMS via API
+     - PLACE ORDER button notifies owner SMS via API
   - [ ] POST /customer/order/:id : INSERT new order into orders table 
   - [ ] GET /customer/orderSuccess/:id : success page showing time for order 
 
