@@ -28,7 +28,6 @@ CREATE TABLE restaurants (
   rating SMALLINT
 );
 
-
 CREATE TABLE menu_items (
   id SERIAL PRIMARY KEY NOT NULL,
   menu_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
@@ -49,9 +48,9 @@ CREATE TABLE orders (
   total_price MONEY
 );
 
-
 CREATE TABLE orders_menu_items (
   id SERIAL PRIMARY KEY NOT NULL,
   menu_item_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE,
   order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
 )
+;
