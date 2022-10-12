@@ -3,3 +3,4 @@ public/styles
 .env
 *.log
 *.sqlite3
+_testUsers.js

@@ -19,9 +19,9 @@ header {
   font-size: 1.75rem;
 
   div.cart {
-      margin-left: auto;
-      padding-right: 1rem;
-     }
+    margin-left: auto;
+    padding-right: 1rem;
+  }
 
   i {
     align-self: center;
@@ -48,29 +48,12 @@ section#search {
     button {
       height: 100%;
       border-radius: 15%;
+      color: $accentPurple;
+      background-color: $primaryBGcolor;
     }
-    }
-
-    img {
-      padding: 2rem
-    }
-}
-
-footer {
-  display: flex;
-  justify-content: end;
-  margin: 1rem;
-
-  button {
-    height: 2.75rem;
-    width: 7rem;
-    font-size: 1.5rem;
   }
-}
 
-button {
-  background-color: $primaryBGcolor;
-  color: #abae67;
-  font-weight: 600;
-  border-radius: 5%;
+  img {
+    padding: 2rem
+  }
 }
