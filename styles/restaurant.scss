@@ -1,0 +1,71 @@
+
+
+$color-blue: #4056A1;
+$color-white: #FFFFFF;
+$color-grey: #545149;
+$color-yellow: #f4f1ec;
+$color-red: red;
+$font-bungee: 'Bungee', cursive;
+$color-backgroud: #f0bf2e;
+
+// main {
+//   display: flexbox;
+//   flex-direction: column;
+//   justify-items: center;
+//   justify-content: center;
+// }
+
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: $font-bungee;
+  align-self: center;
+
+}
+
+h2 {
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  width: 70%;
+  border-radius: 10px;
+  border: 1.5px solid black;
+
+  justify-content: center;
+  text-align: center;
+}
+
+td {
+  border-radius: 5px;
+  border: 1.5px solid black;
+
+}
+
+.table-name {
+  text-align: center;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+}
+
+.order-item {
+  width: 60%;
+  background-color: #f4f1ec;
+  border-radius: 5px;
+  border: 1.5px solid black;
+  justify-content: center;
+  text-align: center;
+}
