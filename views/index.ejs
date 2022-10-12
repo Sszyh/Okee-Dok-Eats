@@ -2,9 +2,12 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Okee-Dok-Eats</title>
 
   <meta charset="UTF-8" >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
@@ -12,13 +15,33 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/index.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
 </head>
 
+
+<nav class="nav-bar">
+  <h1 class="nav-left">Okee-Dok-Eats</h1>
+  <div class="nav-right">
+    <button type="signup" class="nav-buttons">Sign Up</button>
+    <button type="login" class="nav-buttons">Login</button>
+  </div>
+</nav>
+
+
 <body>
-  <h1>Have fun! 🥔</h1>
+  <div class="main-form">
+    <h3>Get food from your local faves today!</h3>
+    <div class="form-buttons">
+      <button type="submit" id="order-now">Order Now!</button>
+      <button type="submit" id="or-not">Or not...</button>
+    </div>
+  </div>
 </body>
 
+<footer>
+  <img src="https://github.com/Sszyh/Okee-Dok-Eats/blob/master/images/okeedokeats.png" alt="Onion ring giving thumbs up"/>
+</footer>
 </html>
