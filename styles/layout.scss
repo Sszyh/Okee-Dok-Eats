@@ -1,6 +1,8 @@
 // See: https://sass-lang.com/
+@import './constant';
 
 body,
 html {
   margin: 0;
+  font-family: $primaryFont;
 }

@@ -1,0 +1,16 @@
+//colors
+$primaryBGcolor: #00FDC8; //current
+
+//fonts
+$primaryFont: 'Amatic SC', sans-serif;
+// $secondaryFont: need to chose?
+
+//mixins can set up what we like I would suggest flexCenter as an option?
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
