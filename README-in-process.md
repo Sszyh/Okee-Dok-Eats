@@ -28,6 +28,39 @@
 * (OPTIONAL)Given that I am logged in as a client, when I click rate/review, I can give the restaurant and rating and leave a review. 
 
 
+### Routes Needed
+
+app.get('/login/:id', (req, res) => {
+  // using encrypted cookies
+  req.session.user_id = req.params.id;
+
+  // or using plain-text cookies
+  res.cookie('user_id', req.params.id);
+
+  // send the user somewhere
+  res.redirect('/');
+});
+
+- INDEX
+  - GET / : homepage (already set up)
+  - sign up route ? not shown
+
+- CUSTOMER 
+  - [ ] GET /login/id as example above
+  - [ ] GET /customer/:id  : display a listing of restaurants to customers
+  - [ ] (Future) SearchBar
+  - [ ] GET /customer/menuItems/:id : display menu items (and current order)
+  - [ ] - PLACE ORDER button notifies owner SMS via API
+  - [ ] POST /customer/order/:id : INSERT new order into orders table 
+  - [ ] GET /customer/orderSuccess/:id : success page showing time for order 
+
+
+- OWNER
+  - [ ] Same as login
+  - [ ] GET /currentOrders/:id : display a list of current orders
+  - [ ] GET /pastOrders/:id :  display a list of past orders
+  - [ ] (Future update menu) PUT /menu/:id : add menu item 
+
 ### `Some external resources that are being used`
 * Trello: https://trello.com/b/zbWuweAT/okee-dok-eats
 * Diagrams: https://app.diagrams.net/#G1onvM64dTtRz_RZhuUnaWUr_4V3vbCTHr
