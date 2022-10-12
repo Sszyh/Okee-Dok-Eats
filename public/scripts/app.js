@@ -4,7 +4,7 @@ $(() => {
 
   //redirect like behavior to MEME page
     $('#or-not').on('click', () => {
-      window.location.replace("https://media.tenor.com/m0rkjXQvKYYAAAAd/im-not-hungry-upset.gif");
+      window.location.href = "https://media.tenor.com/m0rkjXQvKYYAAAAd/im-not-hungry-upset.gif";
     });
 
     /*
@@ -13,9 +13,11 @@ $(() => {
     });
    */
 
-    $('#order-now').on('click', () => {
-
-    });
+    // $('#order-now').on('click', () => {
+    //  $.get('/customer', function(response){
+    //   $(this).html(response)
+    //  })
+    // });
   //INDEX PAGE END
   });
 
