@@ -1,3 +1,18 @@
+// testing
+
+const users = {
+  user1: {
+    id: "aJ48lW",
+    email: "user@example.com",
+    password: "123",
+  },
+  user2 :{
+    id: "user2RandomID",
+    email: "user2@example.com",
+    password: "123",
+  }
+};
+
 // load .env data into process.env
 require('dotenv').config();
 
@@ -34,7 +49,9 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const customerRoutes = require('./routes/customer-view');
 const restaurantRoutes = require('./routes/restaurant');
-const loginRoutes = require('./routes/login')
+const loginRoutes = require('./routes/login');
+
+const logoutRoute = require('./routes/logout')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -44,7 +61,8 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/customer', customerRoutes);
 app.use('/restaurant', restaurantRoutes);
-app.use('/login', loginRoutes)
+app.use('/login', loginRoutes);
+app.use('/logout', logoutRoute);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -52,7 +70,12 @@ app.use('/login', loginRoutes)
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+  // const id = req.cookies.user_id
+  console.log(req.cookies.user_id)
+  const templateVars ={
+    users: users[req.cookies.user_id]
+  }
+  res.render('index', templateVars);
 });
 
 app.listen(PORT, () => {
