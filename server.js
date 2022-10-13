@@ -70,8 +70,6 @@ app.use('/logout', logoutRoute);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  // const id = req.cookies.user_id
-  console.log(req.cookies.user_id)
   const templateVars ={
     users: users[req.cookies.user_id]
   }

@@ -11,10 +11,10 @@
   <h1 class="nav-left">Okee-Dok-Eats</h1>
   <div class="nav-right">
     <% if(users){ %>
-      <!-- TODO add logout "get" should be "post" -->
+      <!--  logout "get" should be "post" -->
       <form action="/logout" method="GET">
         <label for="logout">Logged In As: <%= users.id %></label>
-        <button class="nav-buttons" type="submit"></button>
+        <button class="nav-buttons" type="submit">Logout</button>
       </form>
     <% } else{ %>
     <button type="signup" class="nav-buttons">Sign Up</button>
