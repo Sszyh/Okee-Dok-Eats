@@ -2,31 +2,26 @@
 <html lang="en">
 
 <head>
-  <title>Okee-Dok-Eats</title>
-
-  <meta charset="UTF-8" >
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
+  <%- include('partials/_headData') %>
   <link rel="stylesheet" href="/styles/index.css" />
-
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
 </head>
 
 
 <nav class="nav-bar">
   <h1 class="nav-left">Okee-Dok-Eats</h1>
   <div class="nav-right">
+    <% if(users){ %>
+      <!-- TODO add logout "get" should be "post" -->
+      <form action="/logout" method="GET">
+        <label for="logout">Logged In As: <%= users.id %></label>
+        <button class="nav-buttons" type="submit"></button>
+      </form>
+    <% } else{ %>
     <button type="signup" class="nav-buttons">Sign Up</button>
-    <button type="login" class="nav-buttons">Login</button>
+    <form action="/login/user2" method="GET">
+      <button id="login" type="login" class="nav-buttons">Login</button>
+    </form>
+  <% } %>
   </div>
 </nav>
 
@@ -39,7 +34,7 @@
       <form action="../customer" method="GET">
         <button type="submit" id="order-now">Order Now!</button>
       </form>
-      <button type="submit" id="or-not">Or not...</button>
+      <button type="submit" id="or-not"> Or not...</button>
     </div>
   </div>
 </body>
