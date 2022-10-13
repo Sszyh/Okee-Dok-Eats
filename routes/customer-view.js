@@ -12,16 +12,16 @@ const users = {
   }
 };
 
-const restaurant = {
-  id: 1,
-  owner_id: 1,
-  name: 'Happy lamp restaurant',
-  phone_number: '604-123-1234',
-  menu: 'Love Lamp',
-  address: '536 Namsub Highway',
-  review:'wonderful restaurant',
-  rating: 4.2
-}
+// const restaurant = {
+//   id: 1,
+//   owner_id: 1,
+//   name: 'Happy lamp restaurant',
+//   phone_number: '604-123-1234',
+//   menu: 'Love Lamp',
+//   address: '536 Namsub Highway',
+//   review:'wonderful restaurant',
+//   rating: 4.2
+// }
 
 // testing
 
@@ -35,13 +35,14 @@ router.get('/', (req, res) => {
   if (!req.cookies.user_id) {
     return res.status(401).redirect('/')
   }
+  //jQuery to display all restaurants
 
   const templateVars = {
     users: users[req.cookies.user_id],
-    restaurants: restaurant,
+    // restaurants: restaurant,
   }
 
   res.render('customer_restaurant_view', templateVars)
 });
 
-module.exports = router
+module.exports = router;

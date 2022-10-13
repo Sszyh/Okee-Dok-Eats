@@ -46,6 +46,7 @@ app.use(cookieParser())
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
+const customerRestaurantAPI = require('./routes/customer-view-api');
 const usersRoutes = require('./routes/users');
 const customerRoutes = require('./routes/customer-view');
 const restaurantRoutes = require('./routes/restaurant');
@@ -57,6 +58,7 @@ const logoutRoute = require('./routes/logout');
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
+app.use('/api/customer', customerRestaurantAPI);
 app.use('/users', usersRoutes);
 app.use('/customer', customerRoutes);
 app.use('/restaurant', restaurantRoutes);
