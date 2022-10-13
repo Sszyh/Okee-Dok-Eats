@@ -9,6 +9,8 @@ const express = require('express');
 const router  = express.Router();
 
 router.get('/', (req, res) => {
+  // jQuery AJAX request to fetch data from DB
+  // api/users
   res.render('users');
 });
 
