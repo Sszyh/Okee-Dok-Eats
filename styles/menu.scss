@@ -1,0 +1,68 @@
+header {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  font-size: 1.5em;
+  padding-top: 3em;
+}
+
+.restaurant-name {
+  font-size: 3em;
+  padding-top: 1em;
+}
+
+.item-list {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  align-items: center;
+  background-color: #fdcb1d9e;
+  padding: 0 1em 2em 1em;
+  border-radius: 0.5em;
+
+  .table-left{
+
+    h3 {
+      font-size: 2em;
+    }
+
+    #description {
+      width: 20em;
+      font-size: 1.5em;
+    }
+  }
+
+  img {
+    width: 15em;
+  }
+
+  .table-right {
+    display: flex;
+
+    #quantity {
+      width: 1.5em;
+    }
+
+    #add-to-cart {
+      height: 1.5em;
+    }
+  }
+
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+
+  img {
+    height: 20em;
+  }
+
+  #place-order-btn {
+    margin-right: 10em;
+    width: 5em;
+    height: 2.5em;
+  }
+}
