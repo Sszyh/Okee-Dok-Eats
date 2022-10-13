@@ -8,7 +8,10 @@ VALUES
 INSERT INTO restaurants (owner_id, name,phone_number,menu,address,review,rating)
 VALUES
 (1, 'Happy lamp restaurant','604-123-1234', 'Love Lamp','536 Namsub Highway','wonderful restaurant',4.2),
-(1, 'Cuctos Club','604-345-9999', 'Cuctos Club Menu','651 Nami Road','like to go everyday',4.1);
+(1, 'Cuctos Club','604-345-9999', 'Cuctos Club Menu','651 Nami Road','like to go everyday',4.1),
+(2, 'Jamto Grill','604-488-7777','Jamto Menu','332 Uran Highway','a must go place',4.3),
+(2, 'RGKE BBQ','604-232-5555','RGKE Menu','1313 Toronto Road','surprised with the fruit Cocktail',4.6),
+(2, 'Nelo Belgien Waffle Bar','778-573-3434','Waffle Bar Menu','984w Coclam Street','one of the best waffle',4.5);
 
 INSERT INTO orders (restaurant_id,customer_id,rating,review,order_placed)
 VALUES
@@ -19,11 +22,15 @@ VALUES
 
 INSERT INTO menu_items (menu_id,item,price,time_to_prepare)
 VALUES
+(1,'Sirloin Oscar','42.5',18),
+(1,'Lobster Tail','45',17),
 (1,'Spaghetti Carbonara','14.5',15),
 (1,'Minestrone Soup','5.5',5),
 (1,'Bonafide Chicken','12.75',10),
 (1,'Prawn Crunch Roll','14',10),
 (1,'Spicy Ahi Roll','12',10),
+(2,'Roasted Duck Breast','32',15),
+(2,'Albacore Tuna Nicoise','25',14),
 (2,'Steak Frites','21.5',20),
 (2,'Cheddar Burger','13',8),
 (2,'Crispy Yam Fries','6.5',5),
