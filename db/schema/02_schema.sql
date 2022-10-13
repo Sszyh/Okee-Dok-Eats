@@ -25,7 +25,7 @@ CREATE TABLE restaurants (
   menu TEXT,
   address VARCHAR(255),
   review TEXT,
-  rating SMALLINT
+  rating NUMERIC(2,1)
 );
 
 CREATE TABLE orders (
