@@ -7,8 +7,8 @@ $(() => {
       window.location.href = "https://media.tenor.com/m0rkjXQvKYYAAAAd/im-not-hungry-upset.gif";
     });
 
-
   //INDEX PAGE END
   });
+
 
 
