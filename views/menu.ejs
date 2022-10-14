@@ -6,14 +6,14 @@
   </head>
 
   <header>
-    <div class="login">Logged in as *CustomerName*</div>
+    <div class="login">Logged in as <%= users.id %></div>
     <div class="cart">Cart
     <i class="fa-solid fa-cart-shopping"></i>
     </div>
   </header>
 
   <body>
-    <h1 class="restaurant-name">*Restaurant Name* </h1>
+    <h1 class="restaurant-name"><%= restaurant %> </h1>
     <div class="item-list">
       <div class="table-left">
         <h3>Item 1</h3>

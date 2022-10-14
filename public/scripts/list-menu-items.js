@@ -13,7 +13,6 @@ function getUrlVars(url) {
 };
 
 $(document).ready(function() {
-  // const $url = window.location.href
   const $queryParamObj = getUrlVars(window.location.href)
   console.log($queryParamObj)
 
@@ -30,6 +29,8 @@ $(document).ready(function() {
     console.log(res);
     //this is the menu returned for a given restaurant id
     //loop through the response object and then populate the menu containers gord has set up
+
+
   })
 
 })
