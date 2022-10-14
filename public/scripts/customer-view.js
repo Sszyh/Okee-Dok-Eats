@@ -29,13 +29,5 @@ $(document).on('click', 'button#restaurant-link', function(){
 
   window.location.href = "http://localhost:8080/menu?" +$restaurantName
 
-  // $.ajax ({
-  //   method: 'GET',
-  //   url: 'api/menu',
-  // })
-  // .done((res) => {
-  //   console.log(res);
-  //   //this is the menu returned for a given restaurant id
-  // })
 })
 

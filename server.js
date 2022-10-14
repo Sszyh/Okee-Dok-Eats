@@ -47,7 +47,7 @@ app.use(cookieParser())
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const customerRestaurantAPI = require('./routes/customer-view-api');
-const listMenuBtRestaurantAPI = require('./routes/menu-api');
+const listMenuByRestaurantAPI = require('./routes/menu-api');
 const usersRoutes = require('./routes/users');
 const customerRoutes = require('./routes/customer-view');
 const restaurantRoutes = require('./routes/restaurant');
@@ -67,7 +67,7 @@ app.use('/restaurant', restaurantRoutes);
 app.use('/login', loginRoutes);
 app.use('/logout', logoutRoute);
 app.use('/menu', menuRoute);
-app.use('/api/menu', listMenuBtRestaurantAPI);
+app.use('/api/menu', listMenuByRestaurantAPI);
 // Note: mount other resources here, using the same pattern above
 
 // Home page

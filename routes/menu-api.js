@@ -3,6 +3,7 @@ const router  = express.Router();
 const db = require('../db/connection');
 
 router.get('/', (req, res) => {
+  console.log(req.body)
   const query = `SELECT * FROM menu_items
   WHERE menu_id = 1;`;
   console.log(query);
