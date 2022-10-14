@@ -12,7 +12,6 @@ const createRestaurantList = (restaurant) => {
     url: '/api/customer'
   })
   .done((res) => {
-    console.log(res);
     const $restaurantList = $('#restaurant-listing')
     $restaurantList.empty();
 
@@ -26,7 +25,6 @@ const createRestaurantList = (restaurant) => {
 $(document).on('click', 'button#restaurant-link', function(){
   const $restaurantId = $(this).data('restaurant');
   const $restaurantName = $(this).html()
-  // console.log($restaurantName)
 //this could be sent as id somehow? might be easier to query the DB with ID
   window.location = "/menu?name=" +$restaurantName + "&id=" + $restaurantId
 

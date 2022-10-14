@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
   SELECT * FROM menu_items
   WHERE menu_id = $1;
   `;
-  console.log(query, sqlParams);
   db.query(query, sqlParams)
     .then(data => {
       const menuList = data.rows;
