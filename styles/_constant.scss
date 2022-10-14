@@ -15,4 +15,10 @@ $primaryFont: 'Amatic SC', sans-serif;
   align-items: center;
 }
 
+@mixin flexOptions($justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
 

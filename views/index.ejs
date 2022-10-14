@@ -18,9 +18,12 @@
       </form>
     <% } else{ %>
     <button type="signup" class="nav-buttons">Sign Up</button>
+    <input type="text" id="name" name="name" placeholder="Name">
     <form action="/login/user2" method="GET">
       <button id="login" type="login" class="nav-buttons">Login</button>
+      <input type="text" id="password" name="password" placeholder="Password">
     </form>
+
   <% } %>
   </div>
 </nav>
@@ -31,7 +34,7 @@
     <h3>Get food from your local faves today!</h3>
     <div class="form-buttons">
       <!-- added form tag here to use the already created route -->
-      <form action="../customer" method="GET">
+      <form action="/customer" method="GET">
         <button type="submit" id="order-now">Order Now!</button>
       </form>
       <button type="submit" id="or-not"> Or not...</button>
