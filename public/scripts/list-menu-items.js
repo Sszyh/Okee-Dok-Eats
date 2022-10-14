@@ -20,13 +20,13 @@ function createMenuItem(menu) {
 </div>
 <img src="${menu.item_photo_url}" alt="menu-image">
 <div class="table-right">
-  <div class="item-price">${menu.price}</div>
+  <div class="item-price id-${menu.id}">${menu.price}</div>
   <div id="quantity-count">
-    <button class="decrement"><i class="fa fa-chevron-left"></i></button>
-    <input class="counter" type='text' value=0>
-    <button class="increment"><i class="fa fa-chevron-right"></i></button>
+    <button class="decrement" value="${menu.id}"><i class="fa fa-chevron-left"></i></button>
+    <input class="counter id-${menu.id}" type='text' value="0">
+    <button class="increment" value="${menu.id}"><i class="fa fa-chevron-right"></i></button>
   </div>
-  <button id="add-to-cart" class="id" value="${menu.id}">Add to cart</button>
+  <button id="add-to-cart" value="${menu.id}">Add to cart</button>
 </div>
   `)
 return $menuContainer;
@@ -58,27 +58,30 @@ $(() => {
 
 
 
-$(document).on('click', '.increment', function(){
-  let counter = $('.counter').val();
+$(document).on('click', '.increment', function(e){
+  console.log(e.currentTarget);
+  const $btnUp = e.currentTarget.value;
+  let counter = $(`.counter.id-${$btnUp}`).val();
   counter = parseInt(counter) + 1
-  $('.counter').val(counter);
+  $(`.counter.id-${$btnUp}`).val(counter);
 })
 
-$(document).on('click', '.decrement', function(){
-  let counter = $('.counter').val();
+$(document).on('click', '.decrement', function(e){
+  const $btnDown = e.currentTarget.value;
+  let counter = $(`.counter.id-${$btnDown}`).val();
   counter = parseInt(counter) - 1
 
   if (counter < 0) {
     counter = 0;
   } else {
-  $('.counter').val(counter);
+  $(`.counter.id-${$btnDown}`).val(counter);
   }
 })
 
-$(document).on('click', '#add-to-cart', function(){
-  const $menuPrice = $(document).find('.item-price').html();
-  const $quantity = parseInt($(document).find('.counter').val());
-  console.log($menuPrice, $quantity)
+$(document).on('click', '#add-to-cart', function(e){
+  const $itemId= e.target.value;
+  const $price = $(`.item-price.id-${$itemId}`).text();
+  console.log($price)
 })
 
 
