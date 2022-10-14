@@ -26,13 +26,13 @@ function createMenuItem(menu) {
     <input class="counter" type='text' value=0>
     <button class="increment"><i class="fa fa-chevron-right"></i></button>
   </div>
-  <button id="add-to-cart" class="item-${menu.id}">Add to cart</button>
+  <button id="add-to-cart" class="id" value="${menu.id}">Add to cart</button>
 </div>
   `)
 return $menuContainer;
 }
 
-$(document).ready(function() {
+$(() => {
   const $queryParamObj = getUrlVars(window.location.href)
 
   $.ajax ({
@@ -51,9 +51,12 @@ $(document).ready(function() {
       $('div.item-list').append(createMenuItem(item))
     }
   })
+});
 //select the counter and increment or decrement or 0
 // used this as a template idea
 // https://codepen.io/titanean/pen/PGXPNq
+
+
 
 $(document).on('click', '.increment', function(){
   let counter = $('.counter').val();
@@ -75,10 +78,10 @@ $(document).on('click', '.decrement', function(){
 $(document).on('click', '#add-to-cart', function(){
   const $menuPrice = $(document).find('.item-price').html();
   const $quantity = parseInt($(document).find('.counter').val());
-
+  console.log($menuPrice, $quantity)
 })
 
-})
+
 
 
 
