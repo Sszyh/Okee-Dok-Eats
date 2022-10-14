@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 /*
 we eventually will have separate js files set up inside the queries folder with functions that will query the db for us
 
-const restaurantQueries = require('./db/queries/getRestaurants)
+const restaurantQueries = require('../db/queries/getRestaurants)
     restaurantQueries.getRestaurants()
       .then((restaurants) => {
         res.json({restaurants})
