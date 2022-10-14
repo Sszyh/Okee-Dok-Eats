@@ -80,15 +80,18 @@ $(document).on('click', '.decrement', function(e){
 
 $(document).on('click', '#add-to-cart', function(e){
   const $itemId= e.target.value;
+  const $count = $(this).siblings().children(`.counter.id-${$itemId}`).val();
   const $price = $(`.item-price.id-${$itemId}`).text();
-  console.log($price)
+  const $priceAsFloat = parseFloat($price.replace(/[^\d.]/g, ''));
+  console.log($priceAsFloat);
+  if ($priceAsFloat !== 0) {
+    // add item to cart!
+  }
+  else {
+    //do not add to cart
+  }
+
 })
 
 
 
-
-
-
-{/* <form action="/menu" method="GET">
-<input type="text" id="quantity" name="quantity">
-</form> */}
