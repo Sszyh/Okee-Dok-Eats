@@ -19,11 +19,6 @@ const restaurantQueries = require('./db/queries/getRestaurants)
         res.json({restaurants})
       })
 
-<<<<<<< HEAD
-    .then(data => {
-      res.json({ restaurants: data });
-    })
-=======
 const restaurantQueries = require('../db/queries/getRestaurants)
     restaurantQueries.getRestaurants()
       .then((restaurants) => {
@@ -31,7 +26,6 @@ const restaurantQueries = require('../db/queries/getRestaurants)
       })
 
 */
->>>>>>> master
     .catch(err => {
       res
         .status(500)
