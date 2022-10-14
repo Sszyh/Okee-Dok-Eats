@@ -21,9 +21,11 @@ function createMenuItem(menu) {
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Waffles_with_Strawberries.jpg" alt="">
 <div class="table-right">
   <div class="item-price">${menu.price}</div>
-  <form action="/menu" method="GET">
-    <input type="text" id="quantity" name="quantity">
-  </form>
+  <div id="quantity-count">
+    <button class="decrement"><i class="fa fa-chevron-left"></i></button>
+    <input class="counter" type='text' value=0>
+    <button class="increment"><i class="fa fa-chevron-right"></i></button>
+  </div>
   <button id="add-to-cart">Add to cart</button>
 </div>
   `)
@@ -32,7 +34,6 @@ return $menuContainer;
 
 $(document).ready(function() {
   const $queryParamObj = getUrlVars(window.location.href)
-  console.log($queryParamObj)
 
   $.ajax ({
     method: 'GET',
@@ -43,12 +44,40 @@ $(document).ready(function() {
     }
   })
   .done((res) => {
-    console.log(res);
     //this is the menu returned for a given restaurant id
     //loop through the response object and then populate the menu containers gord has set up
     for (const item of res.menuList) {
       $('div.item-list').append(createMenuItem(item))
     }
   })
+//select the counter and increment or decrement or 0
+// used this as a template idea
+// https://codepen.io/titanean/pen/PGXPNq
+
+$(document).on('click', '.increment', function(){
+  let counter = $('.counter').val();
+  counter = parseInt(counter) + 1
+  $('.counter').val(counter);
 })
 
+$(document).on('click', '.decrement', function(){
+  let counter = $('.counter').val();
+  counter = parseInt(counter) - 1
+
+  if (counter < 0) {
+    counter = 0;
+  } else {
+  $('.counter').val(counter);
+  }
+})
+
+
+
+})
+
+
+
+
+{/* <form action="/menu" method="GET">
+<input type="text" id="quantity" name="quantity">
+</form> */}
