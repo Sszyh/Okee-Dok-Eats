@@ -84,8 +84,9 @@ $(document).on('click', '#add-to-cart', function(e){
   const $price = $(`.item-price.id-${$itemId}`).text();
   const $priceAsFloat = parseFloat($price.replace(/[^\d.]/g, ''));
   console.log($priceAsFloat);
-  if ($priceAsFloat !== 0) {
+  if (parseInt($count) !== 0) {
     // add item to cart!
+    console.log("count:" + $('div.cart-quantity').text());
   }
   else {
     //do not add to cart
