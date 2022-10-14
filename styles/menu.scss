@@ -1,3 +1,5 @@
+@import "./constant";
+
 header {
   display: flex;
   width: 80%;
@@ -7,38 +9,43 @@ header {
 }
 
 .restaurant-name {
-  font-size: 3em;
-  padding-top: 1em;
+  font-size: 6em;
+  font-family: $primaryFont;
 }
 
 .item-list {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  width: 70%;
+  width: 60%;
   align-items: center;
   background-color: #fdcb1d9e;
-  padding: 0 1em 2em 1em;
+  padding: 1em 1em 2em 1em;
   border-radius: 0.5em;
 
   .table-left{
 
+    width: 70%;
+
     h3 {
-      font-size: 2em;
+      font-size: 1.5em;
     }
 
     #description {
-      width: 20em;
-      font-size: 1.5em;
+      font-size: 1em;
+      padding-bottom: 1em;
     }
   }
 
   img {
     width: 15em;
+    padding-bottom: 1em;
   }
 
   .table-right {
     display: flex;
+    justify-content: space-between;
+    width: 13em;
 
     #quantity-count {
       display: flex;
@@ -68,6 +75,10 @@ header {
 
     #add-to-cart {
       height: 1.5em;
+      background-color: $accentPurple;
+      border-radius: .5em;
+      width: 6em;
+      font-size: 1em;
     }
   }
 
@@ -76,7 +87,6 @@ header {
 footer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 80%;
 
   img {
@@ -84,8 +94,12 @@ footer {
   }
 
   #place-order-btn {
-    margin-right: 10em;
-    width: 5em;
-    height: 2.5em;
+    margin-right: 15em;
+    margin-top: 3em;
+    height: 3.5em;
+    background-color: $accentPurple;
+    border-radius: .5em;
+    width: 6em;
+    font-size: 1em;
   }
 }

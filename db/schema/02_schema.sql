@@ -42,10 +42,12 @@ CREATE TABLE orders (
 CREATE TABLE menu_items (
   id SERIAL PRIMARY KEY NOT NULL,
   menu_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE,
-  order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
+  -- order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
   item TEXT,
   price MONEY,
-  time_to_prepare INT
+  time_to_prepare INT,
+  item_description TEXT,
+  item_photo_url VARCHAR(255)
 );
 
 CREATE TABLE orders_menu_items (

@@ -3,19 +3,30 @@
 //reset and adjust the ul
 section#restaurant-container {
 
+  margin-top: 2em;
+
   @include flexOptions(space-evenly, center);
-ul {
-  flex-direction: column;
-  text-decoration: none;
-  list-style: none;
-  padding: 0;
-  font-size: 2.5rem;
+
+  ul {
+    flex-direction: column;
+    text-decoration: none;
+    list-style: none;
+    padding: 0;
+    font-size: 1.5rem;
 
     li {
       padding: 2rem;
     }
   }
+
+  #restaurant-link {
+      padding: 15px 15px 15px 15px;
+      border-radius: .5em;
+      background-color: $accentPurple;
+      font-size: 1em;
+  }
 }
+
 header {
   margin: 1rem;
   display: flex;
@@ -45,7 +56,7 @@ section#search {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  font-size: 2.5rem;
+  font-size: 2rem;
 
   form.searchbar {
 
