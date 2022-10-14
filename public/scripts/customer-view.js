@@ -26,7 +26,7 @@ const createRestaurantList = (restaurant) => {
 $(document).on('click', 'button#restaurant-link', function(){
   const $restaurantName = $(this).html();
   console.log($restaurantName)
-
+//this could be sent as id somehow? might be easier to query the DB with ID
   window.location.href = "http://localhost:8080/menu?" +$restaurantName
 
 })
