@@ -51,6 +51,7 @@ const listMenuByRestaurantAPI = require('./routes/menu-api');
 const usersRoutes = require('./routes/users');
 const customerRoutes = require('./routes/customer-view');
 const restaurantRoutes = require('./routes/restaurant');
+const restaurantAPI = require('./routes/restaurant-api');
 const loginRoutes = require('./routes/login');
 const logoutRoute = require('./routes/logout');
 const menuRoute = require('./routes/menu');
@@ -68,6 +69,7 @@ app.use('/login', loginRoutes);
 app.use('/logout', logoutRoute);
 app.use('/menu', menuRoute);
 app.use('/api/menu', listMenuByRestaurantAPI);
+app.use('/api/restaurant',restaurantAPI);
 // Note: mount other resources here, using the same pattern above
 
 // Home page

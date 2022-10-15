@@ -1,32 +1,26 @@
+@import './constant';
 
-
-$color-blue: #4056A1;
-$color-white: #FFFFFF;
-$color-grey: #545149;
-$color-yellow: #f4f1ec;
-$color-red: red;
-$font-bungee: 'Bungee', cursive;
-$color-backgroud: #f0bf2e;
-
-// main {
-//   display: flexbox;
-//   flex-direction: column;
-//   justify-items: center;
-//   justify-content: center;
-// }
+main {
+  width: 85%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.75rem
+}
 
 header {
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-family: $font-bungee;
+  font-family: $primaryFont;
   align-self: center;
-
+  font-size: 1.5em;
 }
 
 h2 {
   text-align: center;
+  font-family: $primaryFont;
 }
 
 main {
@@ -38,27 +32,16 @@ main {
 section {
   display: flex;
   justify-content: center;
-}
-
-table {
-  width: 70%;
-  border-radius: 10px;
-  border: 1.5px solid black;
-
-  justify-content: center;
+  flex-direction: column;
+  margin: auto;
   text-align: center;
 }
 
-td {
-  border-radius: 5px;
-  border: 1.5px solid black;
-
-}
-
-.table-name {
-  text-align: center;
-  padding-bottom: 0.5em;
-  padding-top: 0.5em;
+button {
+  height: 100%;
+  border-radius: 15%;
+  color: $accentPurple;
+  background-color: $primaryBGcolor;
 }
 
 .order-item {
@@ -68,4 +51,27 @@ td {
   border: 1.5px solid black;
   justify-content: center;
   text-align: center;
+  margin: auto;
+}
+
+article {
+  align-items: center;
+  border-radius: 10px;
+  border: 1.5px solid black;
+}
+
+li {
+  font-family: $primaryFont;
+  border-bottom: 1px solid black;
+  padding-top: 0.5em;
+}
+
+.order-list {
+  margin: auto;
+  padding: 1em;
+}
+
+ul {
+  margin: auto;
+
 }

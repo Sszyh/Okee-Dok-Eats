@@ -2,18 +2,17 @@
 <html lang="en">
 
 <head>
-<%- include('partials/_headData.ejs') %>
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" /> -->
+  <%- include('partials/_headData.ejs') %>
     <link rel="stylesheet" href="/styles/restaurant.css" />
+    <script type="text/javascript" defer src="/scripts/restaurant-view.js"></script>
 </head>
 
 <body>
   <main>
-
-    <header action="/login" method="POST">
+    <header>
       <span>
-        <label>Logged In As:</label>
+        <div>Logged In As: <%= restaurant %>
+        </div>
       </span>
       <span class="">
         <button class="">Past Orders</button>
@@ -23,22 +22,14 @@
     <h2>
       Restaurant Dashboard
     </h2>
-    <div class="table-name">Orders</div>
     <section>
-      <table>
-        <thead>
-          <tr>
-            <th>Order number</th>
-            <th>Time placed</th>
-          </tr>
-        </thead>
+      <p>Order In Process</p>
+      <article class="list-border">
 
-        <tbody>
-          <td>1</td>
-          <td>10:20 am</td>
-        </tbody>
+          <div class="order-list"></div>
 
-      </table>
+      </article>
+
     </section>
     <div>
       <div class="table-name">Order item</div>

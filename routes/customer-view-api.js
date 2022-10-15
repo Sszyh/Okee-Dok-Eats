@@ -1,31 +1,34 @@
 const express = require('express');
 const router  = express.Router();
-const customerQueries = require('../db/queries/restaurant');
-router.get('/', (req, res) => {
-  const query = `SELECT * FROM restaurants`;
-  console.log(query);
-  db.query(query)
-    .then(data => {
-      const restaurants = data.rows;
-      res.json({ restaurants });
-    })
+
+// const db = require('../db/connection');
+
+// router.get('/', (req, res) => {
+//   const query = `SELECT * FROM restaurants`;
+//   console.log(query);
+//   db.query(query)
+//     .then(data => {
+//       const restaurants = data.rows;
+//       res.json({ restaurants });
+//     })
+//     .catch(err => {
+//       res
+//         .status(500)
+//         .json({ error: err.message });
+//     });
+// });
+// module.exports = router;
 
 /*
-we eventually will have separate js files set up inside the queries folder with functions that will query the db for us
-
-const restaurantQueries = require('./db/queries/getRestaurants)
-    restaurantQueries.getRestaurants()
-      .then((restaurants) => {
-        res.json({restaurants})
-      })
-
-const restaurantQueries = require('../db/queries/getRestaurants)
-    restaurantQueries.getRestaurants()
-      .then((restaurants) => {
-        res.json({restaurants})
-      })
-
+  following code is for connecting db/queries/
 */
+const customerQueries = require('../db/queries/restaurant-list');
+router.get('/', (req, res) => {
+
+  customerQueries.getRestaurants()
+    .then(data => {
+      res.json({ restaurants: data });
+    })
     .catch(err => {
       res
         .status(500)
