@@ -12,6 +12,25 @@ function getUrlVars(url) {
     return qParams;
 };
 
+function ajaxGETValues(routeUrl, dataObj) {
+  let response;
+  $.ajax({
+    method: 'GET',
+    url: routeUrl,
+    data: dataObj,
+    async: false,
+    success: function(data) {
+      response = data
+    }
+  })
+  return response;
+}
+
+//get response object as a variable for later use
+const $urlQueryObj = getUrlVars(window.location.href)
+  const $menuAjaxResponseObj = ajaxGETValues('/api/menu', {name: $urlQueryObj.name, id: $urlQueryObj.id})
+
+
 function createMenuItem(menu) {
   const $menuContainer = $(`
   <div class="table-left">
@@ -44,7 +63,7 @@ $(() => {
     }
   })
   .done((res) => {
-    console.log(res);
+    // console.log(res);
     //this is the menu returned for a given restaurant id
     //loop through the response object and then populate the menu containers gord has set up
     for (const item of res.menuList) {
@@ -52,14 +71,13 @@ $(() => {
     }
   })
 });
+
+
 //select the counter and increment or decrement or 0
 // used this as a template idea
 // https://codepen.io/titanean/pen/PGXPNq
-
-
-
 $(document).on('click', '.increment', function(e){
-  console.log(e.currentTarget);
+  // console.log(e.currentTarget);
   const $btnUp = e.currentTarget.value;
   let counter = $(`.counter.id-${$btnUp}`).val();
   counter = parseInt(counter) + 1
@@ -80,19 +98,15 @@ $(document).on('click', '.decrement', function(e){
 
 $(document).on('click', '#add-to-cart', function(e){
   const $itemId= e.target.value;
-  const $count = $(this).siblings().children(`.counter.id-${$itemId}`).val();
+  let $count = $(this).siblings().children(`.counter.id-${$itemId}`).val();
   const $price = $(`.item-price.id-${$itemId}`).text();
   const $priceAsFloat = parseFloat($price.replace(/[^\d.]/g, ''));
-  console.log($priceAsFloat);
-  if (parseInt($count) !== 0) {
-    // add item to cart!
-    console.log("count:" + $('div.cart-quantity').text());
-  }
-  else {
-    //do not add to cart
+  // console.log($priceAsFloat);
+  if (parseInt($count) > 0) {
+    // add item to cart! with price and time to prepare from DB
+    let $currentCount = parseInt($('div.cart-quantity').text()) + parseInt($count);
+    $('.cart-quantity').text($currentCount.toString())
   }
 
 })
-
-
 
