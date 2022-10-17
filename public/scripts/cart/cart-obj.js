@@ -37,16 +37,15 @@ export default class Cart {
     return this.cartItems.some(x => x.menuItemId === oneCartItem.menuItemId)
   }
 
-  removeItem(oneCartItem) {
-    this.cartItems = [...this.cartItems].filter(x => x.menuItemId !== oneCartItem.menuItemId)
+  removeItem(id) {
+    this.cartItems = [...this.cartItems].filter(x => x.menuItemId !== id)
   }
 
   resetCart() {
     this.cartItems = [];
   }
 
-  // testing and debugging
   showCart() {
-    console.log(this.cartItems);
+    return this.cartItems;
   }
 }

@@ -98,12 +98,20 @@ footer {
   }
 
   #view-order-btn {
-    margin-right: 15em;
     margin-top: 3em;
     height: 3.5em;
     background-color: $accentOrange;
     border-radius: .5em;
     width: 6em;
+    font-size: 1em;
+  }
+  #clear-cart {
+    margin-right: 7em;
+    margin-top: 3em;
+    height: 3.5em;
+    background-color: $accentPurple;
+    border-radius: .5em;
+    width: 7em;
     font-size: 1em;
   }
 }

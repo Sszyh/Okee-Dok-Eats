@@ -4,7 +4,6 @@ import { getUrlQString } from './helpers/getUrlQString.js'
  https://stackoverflow.com/questions/4656843/get-querystring-from-url-using-jquery
 */
 
-
 function createMenuItem(menu) {
   const $menuContainer = $(`
 <div class="table-left">
@@ -38,7 +37,6 @@ $(() => {
   })
   .done((res) => {
     //this is the menu returned for a given restaurant id
-    //loop through the response object and then populate the menu containers Gord has set up
     for (const item of res.menuList) {
       $('div.item-list').append(createMenuItem(item))
     }
