@@ -54,6 +54,7 @@ const restaurantRoutes = require('./routes/restaurant');
 const loginRoutes = require('./routes/login');
 const logoutRoute = require('./routes/logout');
 const menuRoute = require('./routes/menu');
+const cartRoute = require('./routes/cart');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -68,6 +69,7 @@ app.use('/login', loginRoutes);
 app.use('/logout', logoutRoute);
 app.use('/menu', menuRoute);
 app.use('/api/menu', listMenuByRestaurantAPI);
+app.use('/cart', cartRoute);
 // Note: mount other resources here, using the same pattern above
 
 // Home page

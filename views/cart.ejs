@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/_headData.ejs') %>
+  <link rel="stylesheet" href="/styles/cart.css">
+  <script defer src="/scripts/cart-helpers.js"></script>
+</head>
+
+<header>
+  <div class="login">Logged in as <%= users.id %></div>
+  <div class="cart">Cart
+  <i class="fa-solid fa-cart-shopping"></i>
+  <!-- insert Jquery to update cart -->
+  <div class="cart-quantity">0</div>
+  </div>
+</header>
+<body>
+  <main>
+        <!-- Cart -->
+
+  <article id="cart-modal">
+    <form id="cart" name="orderItems" action="" method="POST">
+      <table class="cart-items">
+        <thead>
+          <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p id="subtotal">Sub Total: <span id="sub-total"></span></p>
+
+      <ul id="cart-actions">
+        <li>
+          <input type="submit" class="button" name="order-items" value="placeOrder" />
+        </li>
+        <li><input type="button" value="Continue Shopping" onclick="history.back()"></li>
+      </ul>
+    </form>
+  </article>
+  </main>
+</body>
+</html>
