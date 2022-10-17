@@ -4,7 +4,6 @@ import { getUrlQString } from './helpers/getUrlQString.js'
  https://stackoverflow.com/questions/4656843/get-querystring-from-url-using-jquery
 */
 
-
 function createMenuItem(menu) {
   const $menuContainer = $(`
 <div class="table-left">
@@ -67,5 +66,5 @@ $(document).on('click', '.decrement', function(e){
   $(`.counter.id-${$btnDown}`).val(counter);
   }
 })
- /* MANAGING CART MOVED TO CAR HELPERS.JS IN SCRIPTS */
+ /* MANAGING CART DONE BY CART BUILDING AND CART/CART ITEM MODULES */
 

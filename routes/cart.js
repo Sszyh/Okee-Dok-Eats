@@ -15,7 +15,6 @@ const users = {
 
 const express = require('express')
 const router = express.Router()
-
 router.get('/', (req, res) => {
   const templateVars = {
     users: users[req.cookies.user_id]

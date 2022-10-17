@@ -26,16 +26,18 @@ $(document).on('click', '#add-to-cart', function(e){
     $('.cart-quantity').text($currentCount.toString())
   }
 
-if (parseInt($count) >= 0) {
-// console.log($menuAjaxResponseObj.filter(x => x.id === $itemId))
-
+if (parseInt($count) > 0) {
   const CART_ITEM = new CartItem($name, parseInt($count), $priceAsFloat, $itemId)
   CART.addItem(CART_ITEM);
-  console.log(CART);
   CART.saveCart();
 }
+//removal here, the CART obj function needs more testing!
+if (parseInt($count) === 0 && CART.showCart().length !== 0) {
+  const thisItem = CART.cartItems.filter(x => x.menuItemId === $itemId)[0].menuItemId
+  CART.removeItem(thisItem);
+  CART.saveCart();
+  }
 
-//need to add a removal here, the CART obj function needs to be tested
 })
 
 
