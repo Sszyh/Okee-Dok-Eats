@@ -37,7 +37,6 @@ $(() => {
   })
   .done((res) => {
     //this is the menu returned for a given restaurant id
-    //loop through the response object and then populate the menu containers Gord has set up
     for (const item of res.menuList) {
       $('div.item-list').append(createMenuItem(item))
     }
@@ -67,4 +66,3 @@ $(document).on('click', '.decrement', function(e){
   }
 })
  /* MANAGING CART DONE BY CART BUILDING AND CART/CART ITEM MODULES */
-
