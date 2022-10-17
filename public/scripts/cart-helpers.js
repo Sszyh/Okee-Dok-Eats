@@ -30,11 +30,10 @@ if (parseInt($count) >= 0) {
   const CART_ITEM = new CartItem($count, $priceAsFloat, $itemId)
   // console.log(CART_ITEM)
 
-
   CART.addItem(CART_ITEM);
   console.log(CART);
-  // CART.saveCart();
-  // console.log(CART.loadCart())
+  CART.saveCart();
+  console.log(CART.loadCart())
 }
 
 })

@@ -13,21 +13,21 @@ export default class Cart {
 
   loadCart() {
     const order = JSON.parse(sessionStorage.getItem('order'))
-    console.log(order);
     return order !== null ? order : null;
   }
 
   //passed a CartItem obj
   addItem(item) {
-    // console.log(item)
     // if exists only update quantity
     const alreadyExists = this.doesItemExist(item);
-    // const quantity = item.quantity;
-    // console.log(quantity);
-    // const indexOfItemInCart = this.cartItems.indexOf(item.menuItemId)
+    const newQuantity = item.quantity;
     if (alreadyExists) {
-      const itemToUpdate = this.cartItems.filter(x => x.menuItemId === x.menuItemId)
-      return itemToUpdate.quantity = item.quantity
+      for (const ele of this.cartItems) {
+        if (ele.menuItemId === item.menuItemId) {
+          ele.quantity = newQuantity;
+          return ele;
+        }
+      }
     } else {
     this.cartItems.push(item);
     }
@@ -50,37 +50,3 @@ export default class Cart {
     console.log(this.cartItems);
   }
 }
-
-
-
-
-// const testCart = new Cart();
-/*
-const testItem2 = new CartItem ('pizza', 8000, 15, 2)
-const testItem3 = new CartItem ('burger', 1, 45, 3)
-const testItem4 = new CartItem('steak', 3, 25, 1)
-
-console.log(testItem1, testItem2, testItem3)
-
-testCart.resetCart();
-testCart.showCart();
-testCart.addItem(testItem2)
-testCart.addItem(testItem3)
-testCart.addItem(testItem4)
-
-testCart.showCart()
-
-testCart.addItem(testItem1)
-
-testCart.showCart()
-
-*/
-// const testItem1 = new CartItem('steak', 4, 25, 1)
-
-// testCart.addItem(testItem1)
-
-// testCart.saveCart();
-// testCart.loadCart()
-
-
-
