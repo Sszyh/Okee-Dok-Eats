@@ -48,12 +48,14 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const customerRestaurantAPI = require('./routes/customer-view-api');
 const listMenuByRestaurantAPI = require('./routes/menu-api');
+const cartAPI = require('./routes/cart-api');
 const usersRoutes = require('./routes/users');
 const customerRoutes = require('./routes/customer-view');
 const restaurantRoutes = require('./routes/restaurant');
 const loginRoutes = require('./routes/login');
 const logoutRoute = require('./routes/logout');
 const menuRoute = require('./routes/menu');
+const cartRoute = require('./routes/cart');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -68,6 +70,8 @@ app.use('/login', loginRoutes);
 app.use('/logout', logoutRoute);
 app.use('/menu', menuRoute);
 app.use('/api/menu', listMenuByRestaurantAPI);
+app.use('/cart', cartRoute);
+app.use('/api/cart', cartAPI);
 // Note: mount other resources here, using the same pattern above
 
 // Home page

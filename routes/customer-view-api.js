@@ -1,10 +1,9 @@
 const express = require('express');
 const router  = express.Router();
-
-const db = require('../db/connection');
+const db = require('../db/connection')
 
 router.get('/', (req, res) => {
-  const query = `SELECT * FROM restaurants`;
+  const query = `SELECT * FROM restaurants ORDER BY rating DESC;`;
   console.log(query);
   db.query(query)
     .then(data => {
