@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const db = require('../db/connection')
+
 router.get('/', (req, res) => {
   const query = `SELECT * FROM restaurants ORDER BY rating DESC;`;
   console.log(query);
@@ -15,5 +16,23 @@ router.get('/', (req, res) => {
         .json({ error: err.message });
     });
 });
-
 module.exports = router;
+
+/*
+  following code is for connecting db/queries/
+*/
+// const customerQueries = require('../db/queries/restaurant-list');
+// router.get('/', (req, res) => {
+
+//   customerQueries.getRestaurants()
+//     .then(data => {
+//       res.json({ restaurants: data });
+//     })
+//     .catch(err => {
+//       res
+//         .status(500)
+//         .json({ error: err.message });
+//     });
+// });
+
+// module.exports = router;
