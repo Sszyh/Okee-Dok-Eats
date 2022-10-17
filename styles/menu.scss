@@ -23,7 +23,7 @@ header {
   flex-direction: column;
   width: 60%;
   align-items: center;
-  background-color: #fdcb1d9e;
+  background-color: #9d0fa74d;
   padding: 1em 1em 2em 1em;
   border-radius: 0.5em;
 
@@ -79,7 +79,7 @@ header {
 
     #add-to-cart {
       height: 1.5em;
-      background-color: $accentPurple;
+      background-color: $accentOrange;
       border-radius: .5em;
       width: 6em;
       font-size: 1em;
@@ -101,7 +101,7 @@ footer {
     margin-right: 15em;
     margin-top: 3em;
     height: 3.5em;
-    background-color: $accentPurple;
+    background-color: $accentOrange;
     border-radius: .5em;
     width: 6em;
     font-size: 1em;
