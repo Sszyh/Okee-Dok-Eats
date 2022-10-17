@@ -1,6 +1,5 @@
 import Cart from './cart/cart-obj.js';
 import CartItem from './cart/cart-items.js';
-
 const CART = new Cart();
 
 /* $(() => {
@@ -9,6 +8,8 @@ const CART = new Cart();
   })
 
 }) */
+
+
 
 $(document).on('click', '#add-to-cart', function(e){
   e.stopPropagation();
@@ -26,11 +27,15 @@ $(document).on('click', '#add-to-cart', function(e){
   }
 
 if (parseInt($count) >= 0) {
+// console.log($menuAjaxResponseObj.filter(x => x.id === $itemId))
+
   const CART_ITEM = new CartItem($name, parseInt($count), $priceAsFloat, $itemId)
   CART.addItem(CART_ITEM);
   console.log(CART);
   CART.saveCart();
 }
+
+//need to add a removal here, the CART obj function needs to be tested
 })
 
 

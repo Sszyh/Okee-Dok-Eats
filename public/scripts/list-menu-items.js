@@ -1,34 +1,8 @@
-//get queryParams from url via jquery
-https://stackoverflow.com/questions/4656843/get-querystring-from-url-using-jquery
+import { getUrlQString } from './helpers/getUrlQString.js'
 
-function getUrlVars(url) {
-    let qParams = [], hash;
-    let hashes = url.slice(url.indexOf('?') + 1).split('&');
-    for(let i = 0; i < hashes.length; i++){
-        hash = hashes[i].split('=');
-        qParams.push(hash[0]);
-        qParams[hash[0]] = hash[1];
-    }
-    return qParams;
-};
-
-function ajaxGETValues(routeUrl, dataObj) {
-  let response;
-  $.ajax({
-    method: 'GET',
-    url: routeUrl,
-    data: dataObj,
-    async: false,
-    success: function(data) {
-      response = data
-    }
-  })
-  return response;
-}
-
-//get response object as a variable for later use possibly not needed here
-const $urlQueryObj = getUrlVars(window.location.href)
-const $menuAjaxResponseObj = ajaxGETValues('/api/menu', {name: $urlQueryObj.name, id: $urlQueryObj.id})
+/* get queryParams from url via jquery
+ https://stackoverflow.com/questions/4656843/get-querystring-from-url-using-jquery
+*/
 
 
 function createMenuItem(menu) {
@@ -52,7 +26,7 @@ return $menuContainer;
 }
 
 $(() => {
-  const $queryParamObj = getUrlVars(window.location.href)
+  const $queryParamObj = getUrlQString(window.location.href)
 
   $.ajax ({
     method: 'GET',
@@ -94,3 +68,4 @@ $(document).on('click', '.decrement', function(e){
   }
 })
  /* MANAGING CART MOVED TO CAR HELPERS.JS IN SCRIPTS */
+
