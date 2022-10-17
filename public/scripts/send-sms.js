@@ -7,6 +7,6 @@ client.messages
   .create({
     body: 'Hungry? Place an order with Okee-Dok-Eats!',
     from: process.env.TWILIO_PHONE,
-    to: /*Put your number here to test. Remember to use quotes */
+    to: process.env.TWILIO_MY_NUMBER,
   })
   .then(message => console.log(message.sid));
