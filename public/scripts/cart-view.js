@@ -43,7 +43,7 @@ $(() => {
       }
       // add subtotal and time
       $('#total-time').text(`${totalTime} mins`);
-      $('#sub-total').text(`${subTotal}`)
+      $('#sub-total').text(`$ ${subTotal.toFixed(2)} CAD`)
     })
 
 })

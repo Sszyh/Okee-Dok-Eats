@@ -2,14 +2,13 @@ import Cart from './cart/cart-obj.js';
 import CartItem from './cart/cart-items.js';
 const CART = new Cart();
 
-/* $(() => {
-  $(document).on('click', '.open', function () {
-    // console.log(e.target)
-  })
-
-}) */
-
-
+//clear cart and storage and display restaurant page
+$(document).on('click', '#clear-cart', function(){
+  CART.resetCart();
+  CART.saveCart();
+  sessionStorage.clear();
+  window.location.href = '/customer'
+ })
 
 $(document).on('click', '#add-to-cart', function(e){
   e.stopPropagation();

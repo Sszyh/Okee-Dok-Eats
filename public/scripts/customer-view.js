@@ -1,4 +1,4 @@
-//aJax to fetch restaurants and return an li populated with names
+//load a list of restaurants
 const createRestaurantList = (restaurant) => {
   const $restaurant = $(`
   <li> <button id="restaurant-link" type="submit" data-restaurant="${restaurant.id}" >${restaurant.name}</button></li>
@@ -6,7 +6,7 @@ const createRestaurantList = (restaurant) => {
   return $restaurant;
 }
 
-//load a list of restaurants
+//aJax to fetch restaurants and return an restaurant list
   $.ajax({
     method: 'GET',
     url: '/api/customer'
@@ -20,11 +20,14 @@ const createRestaurantList = (restaurant) => {
     }
   })
 
+/*
+Would be better here send the info need in a json through the ajax request, rather than pulling the query string, will return to this if we have time
+*/
+
 //when user clicks on restaurant DB is queried and that restaurants menu is returned on menu-view page
 $(document).on('click', 'button#restaurant-link', function(){
   const $restaurantId = $(this).data('restaurant');
   const $restaurantName = $(this).html()
-//this could be sent as id somehow? might be easier to query the DB with ID
   window.location = "/menu?name=" +$restaurantName + "&id=" + $restaurantId
 
 })
