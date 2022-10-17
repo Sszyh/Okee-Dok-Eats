@@ -1,14 +1,18 @@
 <html lang="en">
   <head>
     <%- include('partials/_headData.ejs') %>
-    <script defer src="/scripts/list-menu-items.js"></script>
+    <script type="module" defer src="/scripts/list-menu-items.js"></script>
+    <script type="module" defer src="/scripts/cart-builder.js" ></script>
     <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/cart.css">
   </head>
 
   <header>
     <div class="login">Logged in as <%= users.id %></div>
     <div class="cart">Cart
     <i class="fa-solid fa-cart-shopping"></i>
+    <!-- insert Jquery to update cart -->
+    <div class="cart-quantity">0</div>
     </div>
   </header>
 
@@ -18,11 +22,24 @@
       <!-- insert from jquery -->
 
     </div>
+
+    <!-- Modal attempt-->
+    <div class="modal">
+      <div class="modal-content">
+          <span class="close-button">×</span>
+          <h1>Hello, I am a modal!</h1>
+      </div>
+  </div>
+
   </body>
 
   <footer>
     <img src="https://github.com/Sszyh/Okee-Dok-Eats/blob/master/images/okeedokeats.png?raw=true" alt="onion ring giving a thumbs up">
-    <button id="place-order-btn">Place Order</button>
+    <!-- <form action="/cart" method="GET"> -->
+      <button type="submit" class="trigger" id="view-order-btn">View Order</button>
+    </form>
   </footer>
+
+
 
 </html>

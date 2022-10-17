@@ -6,6 +6,10 @@ header {
   justify-content: space-between;
   font-size: 1.5em;
   padding-top: 3em;
+
+   .cart-quantity {
+    display: contents;
+  }
 }
 
 .restaurant-name {
@@ -19,7 +23,7 @@ header {
   flex-direction: column;
   width: 60%;
   align-items: center;
-  background-color: #fdcb1d9e;
+  background-color: #9d0fa74d;
   padding: 1em 1em 2em 1em;
   border-radius: 0.5em;
 
@@ -27,7 +31,7 @@ header {
 
     width: 70%;
 
-    h3 {
+    div.name {
       font-size: 1.5em;
     }
 
@@ -47,13 +51,35 @@ header {
     justify-content: space-between;
     width: 13em;
 
-    #quantity {
+    #quantity-count {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
       width: 1.5em;
+
+      button {
+        display: inline-block;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        outline: none;
+
+        input {
+          display: inline-block;
+          width: 2rem;
+          height: 1.5rem;
+          margin: 0 5px;
+          text-align: center;
+        }
+
+      }
     }
 
     #add-to-cart {
       height: 1.5em;
-      background-color: $accentPurple;
+      background-color: $accentOrange;
       border-radius: .5em;
       width: 6em;
       font-size: 1em;
@@ -71,13 +97,62 @@ footer {
     height: 20em;
   }
 
-  #place-order-btn {
+  #view-order-btn {
     margin-right: 15em;
     margin-top: 3em;
     height: 3.5em;
-    background-color: $accentPurple;
+    background-color: $accentOrange;
     border-radius: .5em;
     width: 6em;
     font-size: 1em;
   }
+}
+
+
+
+/* MODAL attempt */
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  width: 24rem;
+  border-radius: 0.5rem;
+}
+
+.close-button {
+  float: right;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
+}
+
+.close-button:hover {
+  background-color: darkgray;
+}
+
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
