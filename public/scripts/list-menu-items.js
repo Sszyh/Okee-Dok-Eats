@@ -28,7 +28,7 @@ function ajaxGETValues(routeUrl, dataObj) {
 
 //get response object as a variable for later use possibly not needed here
 const $urlQueryObj = getUrlVars(window.location.href)
-  const $menuAjaxResponseObj = ajaxGETValues('/api/menu', {name: $urlQueryObj.name, id: $urlQueryObj.id})
+const $menuAjaxResponseObj = ajaxGETValues('/api/menu', {name: $urlQueryObj.name, id: $urlQueryObj.id})
 
 
 function createMenuItem(menu) {
