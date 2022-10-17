@@ -5,7 +5,9 @@ main {
   margin: auto;
   display: flex;
   justify-content: space-evenly;
-  font-size: 1.75rem
+  font-size: 1.75rem;
+  padding-top: 3em;
+  padding-bottom: 3em;
 }
 
 header {
@@ -44,11 +46,8 @@ button {
   background-color: $primaryBGcolor;
 }
 
-.order-item {
-  width: 60%;
-  background-color: #f4f1ec;
-  border-radius: 5px;
-  border: 1.5px solid black;
+.order-information {
+  width: 90%;
   justify-content: center;
   text-align: center;
   margin: auto;
@@ -74,4 +73,25 @@ li {
 ul {
   margin: auto;
 
+}
+
+.item-list {
+  width: 80%;
+  margin-top: 0.5em;
+  border-top: solid black;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  padding-top: 0.5em;
+}
+
+.order-item-box {
+  display: none;
+  border-radius: 5px;
+  border: 1.5px solid black;
+  width: 60%;
+  margin: auto;
+  margin-top: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em
 }

@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
 
   orderList.getOrderList()
     .then(data => {
-      console.log("data",data)
+      //console.log("data",data)
       res.json({ orders: data });
     })
     .catch(err => {
