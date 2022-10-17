@@ -21,6 +21,8 @@ router.get('/', (req, res) => {
     users: users[req.cookies.user_id]
   }
 
+  console.log('display cart page')
+
   res.render('cart', templateVars);
 })
 

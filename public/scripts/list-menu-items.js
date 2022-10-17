@@ -26,7 +26,7 @@ function ajaxGETValues(routeUrl, dataObj) {
   return response;
 }
 
-//get response object as a variable for later use
+//get response object as a variable for later use possibly not needed here
 const $urlQueryObj = getUrlVars(window.location.href)
   const $menuAjaxResponseObj = ajaxGETValues('/api/menu', {name: $urlQueryObj.name, id: $urlQueryObj.id})
 
@@ -34,7 +34,7 @@ const $urlQueryObj = getUrlVars(window.location.href)
 function createMenuItem(menu) {
   const $menuContainer = $(`
 <div class="table-left">
-  <h3>${menu.item}</h3>
+  <div class="name id-${menu.id}">${menu.item}</div>
   <p id="description">${menu.item_description}</p>
 </div>
 <img src="${menu.item_photo_url}" alt="menu-image">
@@ -63,7 +63,6 @@ $(() => {
     }
   })
   .done((res) => {
-    console.log(res);
     //this is the menu returned for a given restaurant id
     //loop through the response object and then populate the menu containers Gord has set up
     for (const item of res.menuList) {
@@ -71,8 +70,6 @@ $(() => {
     }
   })
 });
-
-
 
 //select the counter and increment or decrement or 0
 // used this as a template idea plus help from mentor!

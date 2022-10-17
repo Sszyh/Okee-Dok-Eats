@@ -48,6 +48,7 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const customerRestaurantAPI = require('./routes/customer-view-api');
 const listMenuByRestaurantAPI = require('./routes/menu-api');
+const cartAPI = require('./routes/cart-api')
 const usersRoutes = require('./routes/users');
 const customerRoutes = require('./routes/customer-view');
 const restaurantRoutes = require('./routes/restaurant');
@@ -62,6 +63,7 @@ const cartRoute = require('./routes/cart');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/api/customer', customerRestaurantAPI);
+app.use('/api/cart', cartAPI);
 app.use('/users', usersRoutes);
 app.use('/customer', customerRoutes);
 app.use('/restaurant', restaurantRoutes);

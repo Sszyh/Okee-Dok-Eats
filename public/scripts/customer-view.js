@@ -18,7 +18,6 @@ const createRestaurantList = (restaurant) => {
     for (const restaurant of res.restaurants) {
       $restaurantList.append(createRestaurantList(restaurant))
     }
-
   })
 
 //when user clicks on restaurant DB is queried and that restaurants menu is returned on menu-view page

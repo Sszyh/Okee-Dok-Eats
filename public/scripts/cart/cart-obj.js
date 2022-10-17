@@ -6,7 +6,7 @@ export default class Cart {
   constructor() {
     this.cartItems = [];
   }
-
+//saving and loading to session storage
   saveCart() {
     sessionStorage.setItem(`order`, JSON.stringify(this.cartItems))
   }
