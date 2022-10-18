@@ -43,35 +43,12 @@ $(() => {
   })
 });
 
-//select the counter and increment or decrement or 0
-// used this as a template idea plus help from mentor!
-// https://codepen.io/titanean/pen/PGXPNq
-$(document).on('click', '.increment', function(e){
-  // console.log(e.currentTarget);
-  const $btnUp = e.currentTarget.value;
-  let counter = $(`.counter.id-${$btnUp}`).val();
-  counter = parseInt(counter) + 1
-  $(`.counter.id-${$btnUp}`).val(counter);
-})
 
-$(document).on('click', '.decrement', function(e){
-  const $btnDown = e.currentTarget.value;
-  let counter = $(`.counter.id-${$btnDown}`).val();
-  counter = parseInt(counter) - 1
-
-  if (counter < 0) {
-    counter = 0;
-  } else {
-  $(`.counter.id-${$btnDown}`).val(counter);
-  }
-})
  /* MANAGING CART MOVED TO CAR HELPERS.JS IN SCRIPTS */
 
 /* MODAL attempt */
 
 const modal = document.querySelector(".modal");
-const trigger = document.querySelector(".trigger");
-const closeButton = document.querySelector(".close-button");
 
 function toggleModal() {
     modal.classList.toggle("show-modal");
@@ -79,10 +56,11 @@ function toggleModal() {
 
 function windowOnClick(event) {
     if (event.target === modal) {
-        toggleModal();
+        modal.classList.toggle('show-modal')
     }
 }
 
-trigger.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
+$('.trigger').on("click", toggleModal);
+$('.close-button').on("click", toggleModal);
 window.addEventListener("click", windowOnClick);
+

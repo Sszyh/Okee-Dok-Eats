@@ -1,5 +1,5 @@
 function $buildCartTable(fromAjax, fromSession) {
-  $cartRow = $(`
+  const $cartRow = $(`
   <tr>
     <td>${fromAjax.item}</td>
     <td>${fromSession.quantity}</td>
@@ -14,7 +14,6 @@ function $buildCartTable(fromAjax, fromSession) {
 
 const cart = JSON.parse(sessionStorage.getItem('order')) //pull cart from session storage and parse
 const cartJSON = sessionStorage.getItem('order');
-
 $(() => {
   $.ajax({
     method: 'GET',
@@ -23,7 +22,7 @@ $(() => {
     contentType: "application/json",
     data: { cartJSON },
   })
-    .done((res) => {
+    .then((res) => {
       console.log(res);
       console.log(cart)
       let totalTime = 0;
@@ -45,5 +44,4 @@ $(() => {
       $('#total-time').text(`${totalTime} mins`);
       $('#sub-total').text(`$ ${subTotal.toFixed(2)} CAD`)
     })
-
 })
