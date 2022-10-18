@@ -4,6 +4,8 @@ export { $menuListFromAjax }
  https://stackoverflow.com/questions/4656843/get-querystring-from-url-using-jquery
 */
 
+ /* MANAGING CART MOVED TO CAR HELPERS.JS IN SCRIPTS */
+
 function createMenuItem(menu) {
   const $menuContainer = $(`
 <div class="table-left">
@@ -48,7 +50,6 @@ $(() => {
   })
 });
 
- /* MANAGING CART MOVED TO CAR HELPERS.JS IN SCRIPTS */
 
 /* MODAL attempt */
 
@@ -67,4 +68,3 @@ function windowOnClick(event) {
 $('.trigger').on("click", toggleModal);
 $('.close-button').on("click", toggleModal);
 window.addEventListener("click", windowOnClick);
-
