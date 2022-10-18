@@ -46,7 +46,6 @@ $(() => {
     for (const item of res.menuList) {
       $('div.item-list').append(createMenuItem(item))
     }
-    console.log($menuListFromAjax);
   })
 });
 
