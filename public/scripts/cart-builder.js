@@ -1,10 +1,10 @@
 import Cart from './cart/cart-obj.js';
 import CartItem from './cart/cart-items.js';
-import { sumPrice } from './cart/helpers/sumPrice.js';
-import { sumTime } from './cart/helpers/sumTime.js';
-import { $menuListFromAjax } from './list-menu-items.js';
+import sumPrice from './cart/helpers/sumPrice.js';
+import sumTime from './cart/helpers/sumTime.js';
 import $buildCartTable from './cart/helpers/buildCartTable.js';
-import { filterMenuItems } from './cart/helpers/filterMenuItems.js'
+import filterMenuItems from './cart/helpers/filterMenuItems.js'
+import { $menuListFromAjax } from './list-menu-items.js';
 
 /*
 The functionality around add to cart and remove from cart is working BUT

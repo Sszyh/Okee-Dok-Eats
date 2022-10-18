@@ -1,6 +1,5 @@
-import { getUrlQString } from './helpers/getUrlQString.js'
+import getUrlQString from './helpers/getUrlQString.js'
 export { $menuListFromAjax }
-
 /* get queryParams from url via jquery
  https://stackoverflow.com/questions/4656843/get-querystring-from-url-using-jquery
 */

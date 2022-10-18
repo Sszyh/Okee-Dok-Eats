@@ -1,4 +1,4 @@
-export function ajaxGETValues(routeUrl, dataObj) {
+export default function ajaxGETValues(routeUrl, dataObj) {
   let response;
   $.ajax({
     method: 'GET',
