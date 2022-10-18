@@ -1,14 +1,4 @@
-function $buildCartTable(fromAjax, fromSession) {
-  const $cartRow = $(`
-  <tr>
-    <td>${fromAjax.item}</td>
-    <td>${fromSession.quantity}</td>
-    <td>${fromAjax.price}</td>
-  </tr>
-`)
 
-  return $cartRow;
-}
 
 //use session storage to load the id of the items, then query the db
 
@@ -41,7 +31,7 @@ $(() => {
         $('#cart-rows').append($buildCartTable(res.order[i], cart[i]));
       }
       // add subtotal and time
-      $('#total-time').text(`${totalTime} mins`);
-      $('#sub-total').text(`$ ${subTotal.toFixed(2)} CAD`)
+      $('#total-time').text(`${/*replace this with sumTime function passed cart object*/totalTime} mins`);
+      $('#sub-total').text(`$ ${/*replace this with sumPrice function passed ajax*/subTotal.toFixed(2)} CAD`)
     })
 })

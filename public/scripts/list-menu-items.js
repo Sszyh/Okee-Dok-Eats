@@ -1,4 +1,5 @@
 import { getUrlQString } from './helpers/getUrlQString.js'
+export { $menuListFromAjax }
 
 /* get queryParams from url via jquery
  https://stackoverflow.com/questions/4656843/get-querystring-from-url-using-jquery
@@ -18,12 +19,14 @@ function createMenuItem(menu) {
     <input class="counter id-${menu.id}" type='text' value="0">
     <button class="increment" value="${menu.id}"><i class="fa fa-chevron-right"></i></button>
   </div>
-  <button id="add-to-cart" value="${menu.id}">Add to cart</button>
+  <button id="add-to-cart" value="${menu.id}">Add</button>
+  <button id="remove-from-cart" value="${menu.id}">Remove</button>
 </div>
   `)
 return $menuContainer;
 }
 
+let $menuListFromAjax;
 $(() => {
   const $queryParamObj = getUrlQString(window.location.href)
 
@@ -33,6 +36,9 @@ $(() => {
     data: {
       name: $queryParamObj.name,
       id: $queryParamObj.id,
+    },
+    success: function(data) {
+      $menuListFromAjax = data
     }
   })
   .done((res) => {
@@ -40,9 +46,9 @@ $(() => {
     for (const item of res.menuList) {
       $('div.item-list').append(createMenuItem(item))
     }
+    console.log($menuListFromAjax);
   })
 });
-
 
  /* MANAGING CART MOVED TO CAR HELPERS.JS IN SCRIPTS */
 
