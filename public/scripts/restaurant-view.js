@@ -1,8 +1,8 @@
- import getDateAndTime from './helpers/getDateAndTime.js';
+import getDateAndTime from './helpers/getDateAndTime.js';
 
 // helper function to make orderlist
 const orderList = (order) => {
-const a = getDateAndTime(order.order_placed);
+  const a = getDateAndTime(order.order_placed);
   const $list = $(`
   <li id=${order.id}>${order.id} ${a}</li>
   `)
@@ -11,11 +11,12 @@ const a = getDateAndTime(order.order_placed);
 
 // helper function to create customer information
 const orderDetails = (order) => {
+  const b = getDateAndTime(order.order_placed)
   const $information = $(`
   <section>
-  <div>Order Item</div>
+  <div>Details</div>
   <div>Order Id: ${order.id}</div>
-  <div>Order Placed time: ${order.order_placed}</div>
+  <div>Order Placed time: ${b}</div>
   <div>Customer: ${order.first_name} ${order.last_name}</div>
   <div>Cell: ${order.phone_number}</div>
   </section>
