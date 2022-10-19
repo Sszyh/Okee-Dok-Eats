@@ -1,4 +1,4 @@
-export function getUrlQString(url) {
+export default function getUrlQString(url) {
   let qParams = [], hash;
   let hashes = url.slice(url.indexOf('?') + 1).split('&');
   for(let i = 0; i < hashes.length; i++){

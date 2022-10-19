@@ -1,7 +1,6 @@
-//this allows to create a carr item and store them in the entire "cart"
-//this cart object now contains an array of cart items,
-// this cart needs to be stored in session storage and then sent to the cart page (with ability to modify the items?)
-
+/*
+create a cart object, to hold a given order
+*/
 export default class Cart {
   constructor() {
     this.cartItems = [];
