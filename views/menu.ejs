@@ -26,8 +26,35 @@
     <!-- Modal attempt-->
     <div class="modal">
       <div class="modal-content">
-          <span class="close-button">×</span>
-          <h1>Hello, I am a modal!</h1>
+          <span class="close-button">&times;</span>
+          <h3><%= restaurant %></h3>
+
+          <article id="cart-modal">
+            <form id="cart" name="orderItems" action="order" method="POST">
+              <table class="cart-items">
+                <thead>
+                  <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody id="cart-rows">
+        <!-- insert here -->
+                </tbody>
+              </table>
+              <p id="subtotal">Sub Total (before tax): <span id="sub-total"></span></p>
+              <p>Estimated time: <span id="total-time"></span></p>
+
+              <ul id="cart-actions">
+                <li>
+                  <input id="order" type="submit" class="button" name="order-items" value="Place Order" />
+                </li>
+              </ul>
+            </form>
+          </article>
+
+
       </div>
   </div>
 

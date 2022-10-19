@@ -1,8 +1,11 @@
-import { getUrlQString } from './helpers/getUrlQString.js'
-
+import ajaxGETValues from './helpers/getAjaxValues.js';
+import getUrlQString from './helpers/getUrlQString.js'
+export { $menuListFromAjax, $queryStringObj }
 /* get queryParams from url via jquery
  https://stackoverflow.com/questions/4656843/get-querystring-from-url-using-jquery
 */
+
+ /* MANAGING CART TASKS MOVED TO CART and CART/HELPERS.JS IN SCRIPTS */
 
 function createMenuItem(menu) {
   const $menuContainer = $(`
@@ -18,60 +21,26 @@ function createMenuItem(menu) {
     <input class="counter id-${menu.id}" type='text' value="0">
     <button class="increment" value="${menu.id}"><i class="fa fa-chevron-right"></i></button>
   </div>
-  <button id="add-to-cart" value="${menu.id}">Add to cart</button>
+  <button id="add-to-cart" value="${menu.id}">Add</button>
+  <button id="remove-from-cart" value="${menu.id}">Remove</button>
 </div>
   `)
 return $menuContainer;
 }
 
-$(() => {
-  const $queryParamObj = getUrlQString(window.location.href)
+const $queryStringObj = getUrlQString(window.location.href)
 
-  $.ajax ({
-    method: 'GET',
-    url: '/api/menu',
-    data: {
-      name: $queryParamObj.name,
-      id: $queryParamObj.id,
-    }
-  })
-  .done((res) => {
-    //this is the menu returned for a given restaurant id
-    for (const item of res.menuList) {
-      $('div.item-list').append(createMenuItem(item))
-    }
-  })
-});
+const $menuListFromAjax = ajaxGETValues('/api/menu', { name: $queryStringObj.name, id: $queryStringObj.id,})
 
-//select the counter and increment or decrement or 0
-// used this as a template idea plus help from mentor!
-// https://codepen.io/titanean/pen/PGXPNq
-$(document).on('click', '.increment', function(e){
-  // console.log(e.currentTarget);
-  const $btnUp = e.currentTarget.value;
-  let counter = $(`.counter.id-${$btnUp}`).val();
-  counter = parseInt(counter) + 1
-  $(`.counter.id-${$btnUp}`).val(counter);
-})
+//build menu list this may need to be done after the ajax completes? but in the ajaxGETValues I set async set to false, so we will Need to ask about this?
+for (const item of $menuListFromAjax.menuList) {
+  $('div.item-list').append(createMenuItem(item))
+}
 
-$(document).on('click', '.decrement', function(e){
-  const $btnDown = e.currentTarget.value;
-  let counter = $(`.counter.id-${$btnDown}`).val();
-  counter = parseInt(counter) - 1
 
-  if (counter < 0) {
-    counter = 0;
-  } else {
-  $(`.counter.id-${$btnDown}`).val(counter);
-  }
-})
- /* MANAGING CART MOVED TO CAR HELPERS.JS IN SCRIPTS */
-
-/* MODAL attempt */
+/* MODAL  */
 
 const modal = document.querySelector(".modal");
-const trigger = document.querySelector(".trigger");
-const closeButton = document.querySelector(".close-button");
 
 function toggleModal() {
     modal.classList.toggle("show-modal");
@@ -79,10 +48,12 @@ function toggleModal() {
 
 function windowOnClick(event) {
     if (event.target === modal) {
-        toggleModal();
+        modal.classList.toggle('show-modal')
     }
 }
 
-trigger.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
+$('.trigger').on("click", toggleModal);
+$('.close-button').on("click", toggleModal);
 window.addEventListener("click", windowOnClick);
+
+/* MODAL END */
