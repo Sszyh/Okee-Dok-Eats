@@ -1,10 +1,11 @@
+import ajaxGETValues from './helpers/getAjaxValues.js';
 import getUrlQString from './helpers/getUrlQString.js'
 export { $menuListFromAjax }
 /* get queryParams from url via jquery
  https://stackoverflow.com/questions/4656843/get-querystring-from-url-using-jquery
 */
 
- /* MANAGING CART MOVED TO CAR HELPERS.JS IN SCRIPTS */
+ /* MANAGING CART MOVED TO CART and CART/HELPERS.JS IN SCRIPTS */
 
 function createMenuItem(menu) {
   const $menuContainer = $(`
@@ -27,28 +28,15 @@ function createMenuItem(menu) {
 return $menuContainer;
 }
 
-let $menuListFromAjax;
-$(() => {
-  const $queryParamObj = getUrlQString(window.location.href)
+const $queryParamObj = getUrlQString(window.location.href)
 
-  $.ajax ({
-    method: 'GET',
-    url: '/api/menu',
-    data: {
-      name: $queryParamObj.name,
-      id: $queryParamObj.id,
-    },
-    success: function(data) {
-      $menuListFromAjax = data
-    }
-  })
-  .done((res) => {
-    //this is the menu returned for a given restaurant id
-    for (const item of res.menuList) {
-      $('div.item-list').append(createMenuItem(item))
-    }
-  })
-});
+const $menuListFromAjax = ajaxGETValues('/api/menu', { name: $queryParamObj.name, id: $queryParamObj.id,})
+
+//build menu list this may need to be done after the ajax completes? despite having set async to false? Need to ask about this?
+for (const item of $menuListFromAjax.menuList) {
+  $('div.item-list').append(createMenuItem(item))
+}
+
 
 /* MODAL attempt */
 
@@ -67,5 +55,4 @@ function windowOnClick(event) {
 $('.trigger').on("click", toggleModal);
 $('.close-button').on("click", toggleModal);
 window.addEventListener("click", windowOnClick);
-
 

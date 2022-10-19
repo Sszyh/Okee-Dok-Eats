@@ -5,3 +5,6 @@ export default function filterMenuItems(ajaxMenu, cartToFilter) {
      })
    })
  }
+
+
+ //function which will compare two arrays of objects and return only those items which exist in the second argument passed

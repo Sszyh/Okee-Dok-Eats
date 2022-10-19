@@ -15,6 +15,8 @@ There is a lot of repeated code, in the future it would be great to separate the
 const CART = new Cart();
 sessionStorage.clear(); //clear storage on first load;
 
+console.log($menuListFromAjax);
+
 //clear cart and storage and display restaurant page
 $(document).on('click', '#clear-cart', function () {
   CART.resetCart();
@@ -45,22 +47,20 @@ $(document).on('click', '.decrement', function (e) {
     $(`.counter.id-${$btnDown}`).val(counter);
   }
 })
+/*
+The next two on click events are for removal and adding to cart object, As each time EITHER of these buttons are clicked the cart has to be recalculated They contain a lot of repeated code, If I have time it would be great to separate these out into different modules and functions
 
+*/
 $(document).on('click', '#remove-from-cart', function (e) {
-  const $id =e.target.value;
+  const $id = e.target.value;
   const $count = $(this).siblings().children(`.counter.id-${$id}`).val();
   CART.removeItem(parseInt($id))
   CART.saveCart()
 
-//need to wrap in function or separate functions somehow
   if (CART.showCart().length !== 0) {
-    const menuObjFilteredByCart = filterMenuItems($menuListFromAjax, CART);
-
     //calculate totals
     const subTotal = sumPrice(CART);
-    const timeToPrepare = sumTime(menuObjFilteredByCart, parseInt($count));
-    console.log(`The Subtotal is: ${subTotal}`)
-    console.log(`and the estimate time is: ${timeToPrepare}`)
+    const timeToPrepare = sumTime(CART);
 
     //append hidden modal
     $('#cart-rows').empty().append($buildCartTable(CART.showCart()))
@@ -72,68 +72,67 @@ $(document).on('click', '#remove-from-cart', function (e) {
     $('#total-time').empty()
     $('#sub-total').empty()
   }
-
 })
 
 $(document).on('click', '#add-to-cart', function (e) {
-  // e.stopPropagation();
-  let $headerCount = 0;
+  // let $headerCount = 0;
   const $itemId = e.target.value;
   const $name = $(this).parent().siblings().children(`div.name.id-${$itemId}`).text()
   let $count = $(this).siblings().children(`.counter.id-${$itemId}`).val();
   const $price = $(`.item-price.id-${$itemId}`).text();
   const $priceAsFloat = parseFloat($price.replace(/[^\d.]/g, ''));
+  const $time = $menuListFromAjax.menuList.filter(x => x.id === parseInt($itemId))[0].time_to_prepare;
 
   if (parseInt($count) === 0) {
     return;
   }
 
   if (parseInt($count) > 0) {
-    const CART_ITEM = new CartItem($name, parseInt($count), $priceAsFloat, parseInt($itemId))
+    const CART_ITEM = new CartItem($name, parseInt($count), $priceAsFloat, $time, parseInt($itemId))
     CART.addItem(CART_ITEM);
     CART.saveCart();
   }
 
   //update modal values (but its hidden so wont be seen until user clicks view order)
 
-  //filter items that are in CART from the ajax object and send to calc total time
   if (CART.showCart().length !== 0) {
-    const menuObjFilteredByCart = filterMenuItems($menuListFromAjax, CART);
-
     //calculate totals
     const subTotal = sumPrice(CART);
-    const timeToPrepare = sumTime(menuObjFilteredByCart, parseInt($count));
-    console.log(`The Subtotal is: ${subTotal}`)
-    console.log(`and the estimate time is: ${timeToPrepare}`)
+    const timeToPrepare = sumTime(CART);
 
     //append hidden modal
     $('#cart-rows').empty().append($buildCartTable(CART.showCart()))
     $('#total-time').text(`${timeToPrepare} mins`);
     $('#sub-total').text(`$ ${subTotal.toFixed(2)} CAD`)
 
+  }  else {
+    $('#cart-rows').empty()
+    $('#total-time').empty()
+    $('#sub-total').empty()
   }
 
-  //update Cart header only works when on current page, need to add to storage to display across pages if needed, i will leave for now
+  /*
+  update Cart total in header only works when on current page, header is not sticky either, this is Work in progress,
   for (const ele of CART.showCart()) {
     $headerCount += ele.quantity;
   }
   $('.cart-quantity').text($headerCount.toString())
-
+  */
 })
-
+//DONE CART BUILD
 
 // create a ajax request to POST to our server, pulling info from the CART object and the menuList
 
 $(document).on('click', '#order', function(e){
   e.preventDefault();
   const cart = CART.showCart();
-  const menuFiltered = filterMenuItems($menuListFromAjax, CART).map(x => x.time_to_prepare);
+  // const menuFiltered = filterMenuItems($menuListFromAjax, CART).map(x => x.time_to_prepare);
   $.ajax({
     method: 'POST',
     url: '/order',
     data: {
       order: cart,
-      timeIndexed: menuFiltered,
+      // timeIndexed: menuFiltered,
       //orderPlaced: Date.now(),
     }
   }).then((res) => {
