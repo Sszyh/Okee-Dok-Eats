@@ -15,10 +15,10 @@ VALUES
 
 INSERT INTO orders (restaurant_id,customer_id,rating,review,order_placed)
 VALUES
-(1,3,4.3,'Worth to try','2021-08-07 11:32'),
-(1,4,4.5,'Services are excllent','2021-08-08 12:28'),
-(1,4,3.8,'The food did not meet my expectation','2021-08-08 12:42'),
-(1,4,3.9,'All good!','2021-08-09 13:02');
+(1,3,4.3,'Worth to try','1666151512921'),
+(1,4,4.5,'Services are excllent','1666155545921'),
+(1,4,3.8,'The food did not meet my expectation','1666158594921'),
+(1,4,3.9,'All good!','1666159694921');
 
 INSERT INTO menu_items (menu_id,item,price,time_to_prepare,item_description,item_photo_url)
 VALUES
