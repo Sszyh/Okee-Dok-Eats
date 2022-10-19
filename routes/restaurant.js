@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 const restaurant = {
-  id: 1,
+  id: 2,
   owner_id: 1,
-  name: 'Happy lamp restaurant',
-  phone_number: '604-123-1234',
-  menu: 'Love Lamp',
-  address: '536 Namsub Highway',
-  review:'wonderful restaurant',
-  rating: 4.2
+  name: 'Cuctos Club',
+  phone_number: '604-345-9999',
+  menu: 'Cuctos Club Menu',
+  address: '651 Nami Road',
+  review:'like to go everyday',
+  rating: 4.5
 }
 
 router.get('/', (req, res) => {

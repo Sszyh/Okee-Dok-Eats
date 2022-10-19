@@ -1,10 +1,13 @@
+ import getDateAndTime from './helpers/getDateAndTime.js';
+
 // helper function to make orderlist
 const orderList = (order) => {
+const a = getDateAndTime(order.order_placed);
   const $list = $(`
-  <li id=${order.id}>${order.id} ${order.order_placed}</li>
+  <li id=${order.id}>${order.id} ${a}</li>
   `)
   return $list;
-}
+};
 
 // helper function to create customer information
 const orderDetails = (order) => {
@@ -37,7 +40,6 @@ $(document).ready(function () {
       let a = [];
       let b = [];
       for (const order of response.orders) {
-        console.log("irder,", order)
         // set general order list
         if (!a.includes(order.id)) {
           $('.order-list').append(orderList(order));

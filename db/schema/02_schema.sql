@@ -34,7 +34,7 @@ CREATE TABLE orders (
   customer_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   rating SMALLINT,
   review TEXT,
-  order_placed TIMESTAMP,
+  order_placed VARCHAR(13),
   subtotal MONEY,
   total_price MONEY
 );
