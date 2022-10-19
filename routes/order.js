@@ -16,6 +16,40 @@ router.post('/', async (req, res) => {
     total,
   ]
 
+  let sql = `
+  INSERT INTO orders
+   (restaurant_id,customer_id,rating,review,order_placed)
+  VALUES ($1, $2, $3, $4, $5, $6)
+  RETURNING *;`
+  console.log(sql);
+  db.query(sql, queryParams)
+      .then((sqlResponse) => {
+          order.orderItems.forEach(e => {
+          db.query(
+          `INSERT INTO orders_menu_items VALUES ($1, $2);`,
+          [e.menuItemId, sqlResponse.id])
+        });
+      })
+      .done((res) => {
+        console.log(res);
+      })
+
+  //insert into orders .THEN (with returning *)
+  // .then(orderTable) => ordersTable.id then loop through all menu items and add into the pivot table
+  //so for every menu_item(this is a query itself the menu id, then insert)
+
+  //insert into orders table values ($1, $2, $3,...all the params)
+
+  // db.query('INSERT STATEMENT', [params])
+  // how to deal with pivot table?
+  /*
+  1. insert into orders table
+    *RETURNING*
+  2. .then() sqlResponse.id is the newly created orders table ID
+  3. Loop through all menu_items where menu_item
+    *orderItems.forEach((element) => { db.query('INSERT...', [$1, element.menuItemId]})
+
+  */
 
   //insert into orders table values ($1, $2, $3,...all the params)
 
