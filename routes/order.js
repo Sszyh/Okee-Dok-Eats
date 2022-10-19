@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
   const { orderItems, orderPlaced, restaurantId, total, totalTime, totalTax } = req.body
   const queryParams = [
     restaurantId,
-    4, //userid from cookie
+    4, //in future userid from cookie
     3,
     "Quickly Prepared Order",
     orderPlaced,
@@ -24,6 +24,7 @@ router.post('/', async (req, res) => {
   RETURNING *;`
   db.query(sql, queryParams)
     .then((sqlResponse) => {
+      console.log(sqlResponse.rows);
       const promises = [];
       orderItems.forEach(e => {
         const pivotPromise = db.query(
