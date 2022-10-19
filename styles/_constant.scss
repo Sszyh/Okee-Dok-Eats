@@ -8,7 +8,7 @@ $accentPurple: #A085C8;
 $primaryFont: 'Amatic SC', sans-serif;
 // $secondaryFont: need to chose?
 
-//mixins can set up what we like I would suggest flexCenter as an option?
+//mixins can be set up what we like I would suggest flexCenter as an option?
 
 @mixin flexCenter {
   display: flex;
@@ -21,5 +21,3 @@ $primaryFont: 'Amatic SC', sans-serif;
   justify-content: $justify;
   align-items: $align;
 }
-
-

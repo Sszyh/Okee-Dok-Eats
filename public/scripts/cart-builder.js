@@ -1,10 +1,9 @@
 import Cart from './cart/cart-obj.js';
 import CartItem from './cart/cart-items.js';
-import sumPrice from './cart/helpers/sumPrice.js';
-import sumTime from './cart/helpers/sumTime.js';
-import $buildCartTable from './cart/helpers/buildCartTable.js';
-import filterMenuItems from './cart/helpers/filterMenuItems.js'
-import { $menuListFromAjax, $q, $queryStringObj } from './list-menu-items.js';
+import sumPrice from './cart/cart-helpers/sumPrice.js';
+import sumTime from './cart/cart-helpers/sumTime.js';
+import $buildCartTable from './cart/cart-helpers/buildCartTable.js';
+import { $menuListFromAjax, $queryStringObj } from './list-menu-items.js';
 
 /*
 The functionality around add to cart and remove from cart is working BUT
@@ -112,33 +111,46 @@ $(document).on('click', '#add-to-cart', function (e) {
   }
 
   /*
+
   update Cart total in header only works when on current page, header is not sticky either, this is Work in progress,
   for (const ele of CART.showCart()) {
     $headerCount += ele.quantity;
   }
   $('.cart-quantity').text($headerCount.toString())
+
   */
 })
 //DONE CART BUILD
 
-// create a ajax request to POST to our server, pulling info from the CART object and the menuList
+// create a ajax request to POST to our server, pulling info from the CART object
+
+function onOrderPlaced(nameOfRes, time) {
+  const $successModal = (`
+  <p id="order-success">Your order with ${nameOfRes} has been placed successfully, we estimate it will take ${time} mins to prepare
+  `)
+  return $successModal;
+}
 
 $(document).on('click', '#order', function(e){
   e.preventDefault();
   const cart = CART.showCart();
-  // const menuFiltered = filterMenuItems($menuListFromAjax, CART).map(x => x.time_to_prepare);
+  const totalWithTax = (subTotal + (subTotal * 0.05)).toFixed(2)
   $.ajax({
     method: 'POST',
     url: '/order',
     data: {
-      order: cart,
+      orderItems: cart,
       orderPlaced: Date.now(),
       restaurantId: $queryStringObj.id,
       total: subTotal,
       totalTime: timeToPrepare,
+      totalTax: totalWithTax,
     }
   }).then((res) => {
     //notify user of a successful order placement
     console.log(res)
+    $('#cart-modal').empty()
+    $('#cart-modal').append(onOrderPlaced($queryStringObj.name.replace('%20', ' '), res))
+    // $('.close-button').trigger('click', ['toggleModal']);
   })
 })

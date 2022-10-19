@@ -28,7 +28,7 @@ Would be better here send the info need in a json through the ajax request, rath
 $(document).on('click', 'button#restaurant-link', function(){
   const $restaurantId = $(this).data('restaurant');
   const $restaurantName = $(this).html()
+  //replace this with ajax in the future
   window.location = "/menu?name=" +$restaurantName + "&id=" + $restaurantId
-
 })
 

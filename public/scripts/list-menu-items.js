@@ -5,7 +5,7 @@ export { $menuListFromAjax, $queryStringObj }
  https://stackoverflow.com/questions/4656843/get-querystring-from-url-using-jquery
 */
 
- /* MANAGING CART MOVED TO CART and CART/HELPERS.JS IN SCRIPTS */
+ /* MANAGING CART TASKS MOVED TO CART and CART/HELPERS.JS IN SCRIPTS */
 
 function createMenuItem(menu) {
   const $menuContainer = $(`
@@ -32,13 +32,13 @@ const $queryStringObj = getUrlQString(window.location.href)
 
 const $menuListFromAjax = ajaxGETValues('/api/menu', { name: $queryStringObj.name, id: $queryStringObj.id,})
 
-//build menu list this may need to be done after the ajax completes? despite having set async to false? Need to ask about this?
+//build menu list this may need to be done after the ajax completes? but in the ajaxGETValues I set async set to false, so we will Need to ask about this?
 for (const item of $menuListFromAjax.menuList) {
   $('div.item-list').append(createMenuItem(item))
 }
 
 
-/* MODAL attempt */
+/* MODAL  */
 
 const modal = document.querySelector(".modal");
 
@@ -56,3 +56,4 @@ $('.trigger').on("click", toggleModal);
 $('.close-button').on("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
+/* MODAL END */
