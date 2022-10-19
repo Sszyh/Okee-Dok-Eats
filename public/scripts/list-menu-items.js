@@ -1,6 +1,6 @@
 import ajaxGETValues from './helpers/getAjaxValues.js';
 import getUrlQString from './helpers/getUrlQString.js'
-export { $menuListFromAjax }
+export { $menuListFromAjax, $queryStringObj }
 /* get queryParams from url via jquery
  https://stackoverflow.com/questions/4656843/get-querystring-from-url-using-jquery
 */
@@ -28,9 +28,9 @@ function createMenuItem(menu) {
 return $menuContainer;
 }
 
-const $queryParamObj = getUrlQString(window.location.href)
+const $queryStringObj = getUrlQString(window.location.href)
 
-const $menuListFromAjax = ajaxGETValues('/api/menu', { name: $queryParamObj.name, id: $queryParamObj.id,})
+const $menuListFromAjax = ajaxGETValues('/api/menu', { name: $queryStringObj.name, id: $queryStringObj.id,})
 
 //build menu list this may need to be done after the ajax completes? despite having set async to false? Need to ask about this?
 for (const item of $menuListFromAjax.menuList) {

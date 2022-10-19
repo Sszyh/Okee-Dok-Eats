@@ -4,7 +4,7 @@ import sumPrice from './cart/helpers/sumPrice.js';
 import sumTime from './cart/helpers/sumTime.js';
 import $buildCartTable from './cart/helpers/buildCartTable.js';
 import filterMenuItems from './cart/helpers/filterMenuItems.js'
-import { $menuListFromAjax } from './list-menu-items.js';
+import { $menuListFromAjax, $q, $queryStringObj } from './list-menu-items.js';
 
 /*
 The functionality around add to cart and remove from cart is working BUT
@@ -14,8 +14,6 @@ There is a lot of repeated code, in the future it would be great to separate the
 // set up new cart object
 const CART = new Cart();
 sessionStorage.clear(); //clear storage on first load;
-
-console.log($menuListFromAjax);
 
 //clear cart and storage and display restaurant page
 $(document).on('click', '#clear-cart', function () {
@@ -51,6 +49,8 @@ $(document).on('click', '.decrement', function (e) {
 The next two on click events are for removal and adding to cart object, As each time EITHER of these buttons are clicked the cart has to be recalculated They contain a lot of repeated code, If I have time it would be great to separate these out into different modules and functions
 
 */
+let subTotal = 0;
+let timeToPrepare = 0;
 $(document).on('click', '#remove-from-cart', function (e) {
   const $id = e.target.value;
   const $count = $(this).siblings().children(`.counter.id-${$id}`).val();
@@ -59,8 +59,8 @@ $(document).on('click', '#remove-from-cart', function (e) {
 
   if (CART.showCart().length !== 0) {
     //calculate totals
-    const subTotal = sumPrice(CART);
-    const timeToPrepare = sumTime(CART);
+    subTotal = sumPrice(CART);
+    timeToPrepare = sumTime(CART);
 
     //append hidden modal
     $('#cart-rows').empty().append($buildCartTable(CART.showCart()))
@@ -97,8 +97,8 @@ $(document).on('click', '#add-to-cart', function (e) {
 
   if (CART.showCart().length !== 0) {
     //calculate totals
-    const subTotal = sumPrice(CART);
-    const timeToPrepare = sumTime(CART);
+    subTotal = sumPrice(CART);
+    timeToPrepare = sumTime(CART);
 
     //append hidden modal
     $('#cart-rows').empty().append($buildCartTable(CART.showCart()))
@@ -132,8 +132,10 @@ $(document).on('click', '#order', function(e){
     url: '/order',
     data: {
       order: cart,
-      // timeIndexed: menuFiltered,
-      //orderPlaced: Date.now(),
+      orderPlaced: Date.now(),
+      restaurantId: $queryStringObj.id,
+      total: subTotal,
+      totalTime: timeToPrepare,
     }
   }).then((res) => {
     //notify user of a successful order placement
