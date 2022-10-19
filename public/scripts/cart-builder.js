@@ -120,3 +120,24 @@ $(document).on('click', '#add-to-cart', function (e) {
   $('.cart-quantity').text($headerCount.toString())
 
 })
+
+
+// create a ajax request to POST to our server, pulling info from the CART object and the menuList
+
+$(document).on('click', '#order', function(e){
+  e.preventDefault();
+  const cart = CART.showCart();
+  const menuFiltered = filterMenuItems($menuListFromAjax, CART).map(x => x.time_to_prepare);
+  $.ajax({
+    method: 'POST',
+    url: '/order',
+    data: {
+      order: cart,
+      timeIndexed: menuFiltered,
+      //orderPlaced: Date.now(),
+    }
+  }).then((res) => {
+    //notify user of a successful order placement
+    console.log(res)
+  })
+})

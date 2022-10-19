@@ -50,7 +50,6 @@ $(() => {
   })
 });
 
-
 /* MODAL attempt */
 
 const modal = document.querySelector(".modal");
@@ -68,3 +67,5 @@ function windowOnClick(event) {
 $('.trigger').on("click", toggleModal);
 $('.close-button').on("click", toggleModal);
 window.addEventListener("click", windowOnClick);
+
+
