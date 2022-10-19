@@ -48,6 +48,7 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const customerRestaurantAPI = require('./routes/customer-view-api');
 const listMenuByRestaurantAPI = require('./routes/menu-api');
+const loginAPI = require('./routes/login-api');
 // const cartAPI = require('./routes/cart-api');
 const usersRoutes = require('./routes/users');
 const customerRoutes = require('./routes/customer-view');
@@ -74,6 +75,7 @@ app.use('/logout', logoutRoute);
 app.use('/menu', menuRoute);
 app.use('/api/menu', listMenuByRestaurantAPI);
 app.use('/api/restaurant',restaurantAPI);
+app.use('/api/login', loginAPI);
 
 app.use('/order', orderRoute);
 // app.use('/cart', cartRoute);
@@ -86,7 +88,7 @@ app.use('/order', orderRoute);
 
 app.get('/', (req, res) => {
   const templateVars ={
-    users: users[req.cookies.user_id]
+    user: req.cookies.user_id
   }
   res.render('index', templateVars);
 });
