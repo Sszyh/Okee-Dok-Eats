@@ -38,7 +38,7 @@ router.get('/', (req, res) => {
   //jQuery to display all restaurants
 
   const templateVars = {
-    users: users[req.cookies.user_id],
+    user: req.cookies.user_id
     // restaurants: restaurant,
   }
 

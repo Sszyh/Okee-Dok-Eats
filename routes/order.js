@@ -6,89 +6,71 @@ const sendMessage = require('../public/scripts/send-sms.js')
 router.post('/', async (req, res) => {
   const id = req.cookies.user_id;
   console.log(req.body);
-  const { order, orderPlaced, restaurantId, total, totalTime } = req.body
+  const { orderItems, orderPlaced, restaurantId, total, totalTime, totalTax } = req.body
   const queryParams = [
     restaurantId,
-    id,
+    4, //userid from cookie
     3,
     "Quickly Prepared Order",
     orderPlaced,
     total,
+    totalTax
   ]
 
   let sql = `
   INSERT INTO orders
-   (restaurant_id,customer_id,rating,review,order_placed)
-  VALUES ($1, $2, $3, $4, $5, $6)
+   (restaurant_id,customer_id,rating,review,order_placed,subtotal,total_price)
+  VALUES ($1, $2, $3, $4, $5, $6, $7)
   RETURNING *;`
-  console.log(sql);
   db.query(sql, queryParams)
-      .then((sqlResponse) => {
-          order.orderItems.forEach(e => {
-          db.query(
-          `INSERT INTO orders_menu_items VALUES ($1, $2);`,
-          [e.menuItemId, sqlResponse.id])
-        });
+    .then((sqlResponse) => {
+      const promises = [];
+      orderItems.forEach(e => {
+        const pivotPromise = db.query(
+          `INSERT INTO orders_menu_items (menu_item_id,order_id) VALUES ($1, $2);`,
+          [e.menuItemId, sqlResponse.rows[0].id])
+        promises.push(pivotPromise);
       })
-      .done((res) => {
-        console.log(res);
-      })
+      return Promise.all(promises)
+    })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
 
-  //insert into orders .THEN (with returning *)
-  // .then(orderTable) => ordersTable.id then loop through all menu items and add into the pivot table
-  //so for every menu_item(this is a query itself the menu id, then insert)
-
-  //insert into orders table values ($1, $2, $3,...all the params)
-
-  // db.query('INSERT STATEMENT', [params])
-  // how to deal with pivot table?
-  /*
+/*
   1. insert into orders table
     *RETURNING*
   2. .then() sqlResponse.id is the newly created orders table ID
-  3. Loop through all menu_items where menu_item
+  3. Loop through all items in cart and fetch the id and insert that id, with the newly created orders table pk, problem is here, the cart.orderItems is not accessible
     *orderItems.forEach((element) => { db.query('INSERT...', [$1, element.menuItemId]})
+*/
 
-  */
+  /* try {
+    await sendMessage('Hello from Post', '+17782273501') //customer
+    await sendMessage('Hello from Post', '+17782273501') //restaurant
+    console.log("you have placed an order");
+    res.send(`Your order was placed and will take this long`)
+  } catch (error) {
+    console.log(`There was an error`)
+    res.send(`Maui will cry`)
+  }
+   */
 
-  //insert into orders table values ($1, $2, $3,...all the params)
+  /* sendMessage('Hello from Post', '+17782273501').then(() => {
+    console.log("you have placed an order");
+    res.send(`Your order was placed and will take this long`)
 
-  // db.query('INSERT STATEMENT', [params])
-  // how to deal with pivot table?
-
-  /*
-  Order table:
-  pk,
-  restaurant_id
-  customer_id
-  rating
-  review
-  order_placed
-  subtotal
-  total_price
-  */
-
-/* try {
-  await sendMessage('Hello from Post', '+17782273501') //customer
-  await sendMessage('Hello from Post', '+17782273501') //restaurant
-  console.log("you have placed an order");
-  res.send(`Your order was placed and will take this long`)
-} catch (error) {
-  console.log(`There was an error`)
-  res.send(`Maui will cry`)
-}
- */
-
-/* sendMessage('Hello from Post', '+17782273501').then(() => {
-  console.log("you have placed an order");
-  res.send(`Your order was placed and will take this long`)
-
-}).catch(() => {
-  console.log(`There was an error`)
-  res.send(`Maui will cry`)
-})
- */
-res.status(200).send(totalTime)
+  }).catch(() => {
+    console.log(`There was an error`)
+    res.send(`Maui will cry`)
+  })
+   */
+  res.status(200).send(totalTime)
 
 
 });
