@@ -1,23 +1,26 @@
 const express = require('express');
+const db = require('../db/connection');
 const router = express.Router();
 
-const restaurant = {
-  id: 2,
-  owner_id: 1,
-  name: 'Cuctos Club',
-  phone_number: '604-345-9999',
-  menu: 'Cuctos Club Menu',
-  address: '651 Nami Road',
-  review:'like to go everyday',
-  rating: 4.5
-};
-
 router.get('/', (req, res) => {
-  const templateVars = {
-    restaurant: restaurant.name
-  };
 
-  res.render('restaurant',templateVars);
-});
+  const ownerParams = [req.cookies.user_id];
+  const query = `
+    SELECT * FROM restaurants
+    WHERE owner_id = $1;
+    `;
+  db.query(query, ownerParams)
+    .then(data => {
+      if(data.rows.length) {
+        const templateVars = {
+          restaurant: data.rows[0]
+        }
+        res.cookie('restaurant_id',data.rows[0].id)
+
+        res.render('restaurant', templateVars);
+      }
+    })
+
+})
 
 module.exports = router;

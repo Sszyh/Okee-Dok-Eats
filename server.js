@@ -51,7 +51,7 @@ app.use('/login', loginRoutes);
 app.use('/logout', logoutRoute);
 app.use('/menu', menuRoute);
 app.use('/api/menu', listMenuByRestaurantAPI);
-app.use('/api/restaurant',restaurantAPI);
+app.use('/api/restaurant', restaurantAPI);
 app.use('/api/login', loginAPI);
 app.use('/order', orderRoute);
 app.use('/sms', receiveSMS);
@@ -62,8 +62,9 @@ app.use('/sms', receiveSMS);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  const templateVars ={
-    user: req.cookies.user_id
+  const templateVars = {
+    user_name: req.cookies.user_name,
+    user_id: req.cookies.user_id
   }
   res.render('index', templateVars);
 });
