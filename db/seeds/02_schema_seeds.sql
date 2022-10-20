@@ -2,23 +2,23 @@ INSERT INTO users (first_name, last_name,phone_number,email,is_owner)
 VALUES
 ('Eva', 'Stanley','604-223-3323', 'evastanlay@gmail.com',true),
 ('Louisa', 'Meyer','604-442-3898', 'louisameyer21@gmail.com',true),
-('Dominic', 'Parks','778-462-3800', 'dominicparks8@gmail.com',false),
-('Alice', 'Max','778-222-6665', 'alicemax3@gmail.com',false);
+('Dominic', 'Parks','778-462-3800', 'dominicparks8@gmail.com',true),
+('Alice', 'Max','778-222-6665', 'alicemax3@gmail.com',true);
 
 INSERT INTO restaurants (owner_id, name,phone_number,menu,address,review,rating)
 VALUES
 (1, 'Happy lamp restaurant','604-123-1234', 'Love Lamp','536 Namsub Highway','wonderful restaurant',4.2),
-(1, 'Cuctos Club','604-345-9999', 'Cuctos Club Menu','651 Nami Road','like to go everyday',4.5),
-(2, 'Jamto Grill','604-488-7777','Jamto Menu','332 Uran Highway','a must go place',4.3),
-(2, 'RGKE BBQ','604-232-5555','RGKE Menu','1313 Toronto Road','surprised with the fruit Cocktail',4.6),
+(2, 'Cuctos Club','604-345-9999', 'Cuctos Club Menu','651 Nami Road','like to go everyday',4.5),
+(3, 'Jamto Grill','604-488-7777','Jamto Menu','332 Uran Highway','a must go place',4.3),
+(4, 'RGKE BBQ','604-232-5555','RGKE Menu','1313 Toronto Road','surprised with the fruit Cocktail',4.6),
 (2, 'Nelo Belgien Waffle Bar','778-573-3434','Waffle Bar Menu','984w Coclam Street','one of the best waffle',4.4);
 
 INSERT INTO orders (restaurant_id,customer_id,rating,review,order_placed)
 VALUES
-(1,3,4.3,'Worth to try','1666151512921'),
-(1,4,4.5,'Services are excllent','1666155545921'),
-(1,4,3.8,'The food did not meet my expectation','1666158594921'),
-(1,4,3.9,'All good!','1666159694921');
+(2,3,4.3,'Worth to try','1666151512921'),
+(2,4,4.5,'Services are excllent','1666155545921'),
+(4,4,3.8,'The food did not meet my expectation','1666158594921'),
+(4,4,3.9,'All good!','1666159694921');
 
 INSERT INTO menu_items (menu_id,item,price,time_to_prepare,item_description,item_photo_url)
 VALUES

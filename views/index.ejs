@@ -10,18 +10,20 @@
 <nav class="nav-bar">
   <h1 class="nav-left">Okee-Dok-Eats</h1>
   <div class="nav-right">
-    <% if(user){ %>
+    <% if(user_name){ %>
       <!--  logout "get" should be "post" -->
       <form action="/logout" method="GET">
-        <label for="logout">Logged In As: <%= user %></label>
+        <label for="logout">Logged In As: <%= user_name %></label>
         <button class="nav-buttons" type="submit">Logout</button>
       </form>
     <% } else{ %>
     <button type="signup" class="nav-buttons">Sign Up</button>
     <input type="text" id="password" name="password" placeholder="Password">
-    <form action="/login/Alice" method="GET">
+    <form action="/api/login" method="POST">
       <button id="login" type="login" name="login" class="nav-buttons">Login</button>
       <input type="text" id="name" name="name" placeholder="Name">
+      <input type="checkbox" id="is_owner" name="is_owner" >Is Owner</input>
+
     </form>
 
   <% } %>

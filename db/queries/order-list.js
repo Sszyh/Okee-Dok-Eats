@@ -1,17 +1,20 @@
 const db = require('../connection');
 
-const getOrderList = () => {
-  return db.query(`
-  SELECT orders.id, orders.customer_id,users.first_name,users.last_name,users.phone_number, orders.order_placed,menu_items.item
-  FROM users
-  JOIN orders ON users.id=orders.customer_id
-  JOIN orders_menu_items ON order_id=orders.id
-  JOIN menu_items ON menu_items.id=menu_item_id
+const getOrderList = (restId) => {
 
+console.log("restid",restId)
+  return db.query(`
+  SELECT o.id, o.customer_id,u.first_name,u.last_name,u.phone_number, o.order_placed,mi.item
+  FROM users u
+  JOIN orders o ON u.id=o.customer_id
+  JOIN orders_menu_items omi ON omi.order_id=o.id
+  JOIN menu_items mi ON mi.id= omi.menu_item_id
+  WHERE o.restaurant_id = ${restId}
   ORDER BY order_placed;
 
   `)
     .then(data => {
+      console.log("datar",data.rows)
       return data.rows;
     });
 };

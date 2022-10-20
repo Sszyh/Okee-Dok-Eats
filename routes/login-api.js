@@ -3,21 +3,32 @@ If I have time it would great to load the users as per the database query, but f
 */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const db = require('../db/connection');
 
-router.get('/', (req, res) => {
-  const loginName = req.cookies.user_id.name
+router.post('/', (req, res) => {
+
+  const loginName = req.body.name;
   const sqlParams = [`${loginName}`]
+  const isOwner = req.body.is_owner;
 
   const query = `
-  SELECT * FROM users
+  SELECT first_name, id FROM users
   WHERE first_name = $1;
   `;
   db.query(query, sqlParams)
     .then(data => {
-      const user = data.rows;
-      res.send('/').json({ user })
+      if (data.rows.length) {
+        const user_name = data.rows[0].first_name;
+        const user_id = data.rows[0].id;
+        res.cookie('user_id', user_id);
+        res.cookie('user_name', user_name);
+      }
+      if (isOwner === "on") {
+        res.redirect('/restaurant');
+      } else {
+        res.redirect('/');
+      }
     })
     .catch(err => {
       res
