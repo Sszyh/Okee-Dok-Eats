@@ -45,8 +45,8 @@ router.post('/', async(req, res) => {
 
 
   try {
-    await sendMessage('Hello from Post', '+17782273501') //customer
-    // await sendMessage('Hello from Post', '+17782273501') //restaurant
+    await sendMessage('Your order has been placed, please wait for the restaurant response', '+17782273501') //customer
+    await sendMessage('An order has been placed for Alice Max, see your web dashboard to view new Order. Please reply with the estimate time to prepare the order.', '+16045788964 ') //restaurant
     console.log("you have placed an order");
     // res.send(`Your order was placed and will take this long`)
   } catch (error) {
@@ -69,9 +69,7 @@ router.post('/', async(req, res) => {
 
 
    */
-  res.status(200)
-
-  .send(totalTime);
+  res.status(200).send(totalTime);
 
 
 });
