@@ -51,16 +51,16 @@ router.post('/', async (req, res) => {
     *orderItems.forEach((element) => { db.query('INSERT...', [$1, element.menuItemId]})
 */
 
-  /* try {
-    await sendMessage('Hello from Post', '+17782273501') //customer
-    await sendMessage('Hello from Post', '+17782273501') //restaurant
-    console.log("you have placed an order");
-    res.send(`Your order was placed and will take this long`)
-  } catch (error) {
-    console.log(`There was an error`)
-    res.send(`Maui will cry`)
-  }
-   */
+/* try {
+  await sendMessage('Hello from Post', '+17782273501') //customer
+  await sendMessage('Hello from Post', '+17782273501') //restaurant
+  console.log("you have placed an order");
+  res.send(`Your order was placed and will take this long`)
+} catch (error) {
+  console.log(`There was an error`)
+  res.send(`Maui will cry`)
+}
+ */
 
   /* sendMessage('Hello from Post', '+17782273501').then(() => {
     console.log("you have placed an order");
