@@ -46,6 +46,7 @@ router.get('/', (req, res) => {
   }
 
   res.render('customer_restaurant_view', templateVars)
+
 });
 
 module.exports = router;

@@ -15,9 +15,12 @@ router.get('/', (req, res) => {
         const templateVars = {
           restaurant: data.rows[0]
         }
+        console.log("q",data.rows[0].name)
         res.cookie('restaurant_id',data.rows[0].id)
+        //res.cookie('restaurant_name',data.rows[0].name)
 
         res.render('restaurant', templateVars);
+
       }
     })
 

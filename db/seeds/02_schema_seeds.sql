@@ -1,9 +1,9 @@
 INSERT INTO users (first_name, last_name,phone_number,email,is_owner)
 VALUES
-('Eva', 'Stanley','604-223-3323', 'evastanlay@gmail.com',true),
-('Louisa', 'Meyer','604-442-3898', 'louisameyer21@gmail.com',true),
+('Gord', 'Stanley','604-223-3323', 'evastanlay@gmail.com',true),
+('Matt', 'Meyer','604-442-3898', 'louisameyer21@gmail.com',true),
 ('Dominic', 'Parks','778-462-3800', 'dominicparks8@gmail.com',true),
-('Alice', 'Max','778-222-6665', 'alicemax3@gmail.com',true);
+('Sarah', 'Max','778-222-6665', 'alicemax3@gmail.com',true);
 
 INSERT INTO restaurants (owner_id, name,phone_number,menu,address,review,rating)
 VALUES
