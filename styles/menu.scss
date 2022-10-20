@@ -2,10 +2,14 @@
 
 header {
   display: flex;
-  width: 80%;
+  //Stay on top coding
+  position:fixed;
+  top: 2em;
+
+  //End of the SoT coding
+  // width: 80%;
   justify-content: space-between;
   font-size: 1.5em;
-  padding-top: 3em;
 
    .cart-quantity {
     display: contents;
@@ -15,6 +19,7 @@ header {
 .restaurant-name {
   font-size: 6em;
   font-family: $primaryFont;
+  margin-top: 1em;
 }
 
 .item-list {
@@ -54,7 +59,7 @@ header {
     #quantity-count {
       display: flex;
       justify-content: center;
-      margin-top: 30px;
+      margin-top: 2.5em;
       width: 1.5em;
 
       button {
@@ -83,6 +88,13 @@ header {
       border-radius: .5em;
       width: 6em;
       font-size: 1em;
+      &:hover {background-color: $shadowOrange}
+
+      &:active {
+        background-color: $shadowOrange;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+      }
     }
   }
 
@@ -104,15 +116,29 @@ footer {
     border-radius: .5em;
     width: 6em;
     font-size: 1em;
+    &:hover {background-color: $shadowOrange}
+
+    &:active {
+      background-color: $shadowOrange;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
   }
   #clear-cart {
     margin-right: 7em;
     margin-top: 3em;
     height: 3.5em;
-    background-color: $accentPurple;
+    background-color: $accentOrange;
     border-radius: .5em;
     width: 7em;
     font-size: 1em;
+    &:hover {background-color: $shadowOrange}
+
+    &:active {
+      background-color: $shadowOrange;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
   }
 }
 
