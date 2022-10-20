@@ -43,26 +43,22 @@ router.post('/', async(req, res) => {
         .json({ error: err.message });
     });
 
-  /*
-  1. insert into orders table
-    *RETURNING*
-  2. .then() sqlResponse.id is the newly created orders table ID
-  3. Loop through all items in cart and fetch the id and insert that id, with the newly created orders table pk, problem is here, the cart.orderItems is not accessible
-    *orderItems.forEach((element) => { db.query('INSERT...', [$1, element.menuItemId]})
-*/
 
-  /* try {
+  try {
     await sendMessage('Hello from Post', '+17782273501') //customer
-    await sendMessage('Hello from Post', '+17782273501') //restaurant
+    // await sendMessage('Hello from Post', '+17782273501') //restaurant
     console.log("you have placed an order");
-    res.send(`Your order was placed and will take this long`)
+    // res.send(`Your order was placed and will take this long`)
   } catch (error) {
     console.log(`There was an error`)
-    res.send(`Maui will cry`)
+    // res.send(`Maui will cry`)
   }
-   */
 
-  /* sendMessage('Hello from Post', '+17782273501').then(() => {
+
+  /*
+  promise version
+
+  sendMessage('Hello from Post', '+17782273501').then(() => {
     console.log("you have placed an order");
     res.send(`Your order was placed and will take this long`)
 
@@ -70,24 +66,14 @@ router.post('/', async(req, res) => {
     console.log(`There was an error`)
     res.send(`Maui will cry`)
   })
+
+
    */
-  res.status(200).send(totalTime);
+  res.status(200)
+
+  .send(totalTime);
 
 
 });
 
 module.exports = router;
-
-
-/*
-1. click submit order, signals ajax post to /api/order
- *notes: event.preventDefault()
-2. data {key:value} //our payload ?? how to get this info from html?
-3. ON server store request ?sql insert?
-  *notes: promise
-4. success notifies the users of successful order placement.
-  * maybe a redirect here if we have time!
-5. send a SMS to phone
-
-
-*/

@@ -52,9 +52,11 @@ let subTotal = 0;
 let timeToPrepare = 0;
 $(document).on('click', '#remove-from-cart', function (e) {
   const $id = e.target.value;
-  const $count = $(this).siblings().children(`.counter.id-${$id}`).val();
+  let $headerCount = parseInt($('.cart-quantity').text())
   CART.removeItem(parseInt($id))
-  CART.saveCart()
+  CART.saveCart();
+  const newQuantity = CART.cartItems.reduce((acc, obj) => {return acc + obj.quantity }, 0);
+  $('.cart-quantity').text(newQuantity.toString())
 
   if (CART.showCart().length !== 0) {
     //calculate totals
@@ -74,7 +76,7 @@ $(document).on('click', '#remove-from-cart', function (e) {
 })
 
 $(document).on('click', '#add-to-cart', function (e) {
-  // let $headerCount = 0;
+  let $headerCount = 0;
   const $itemId = e.target.value;
   const $name = $(this).parent().siblings().children(`div.name.id-${$itemId}`).text()
   let $count = $(this).siblings().children(`.counter.id-${$itemId}`).val();
@@ -98,6 +100,11 @@ $(document).on('click', '#add-to-cart', function (e) {
     //calculate totals
     subTotal = sumPrice(CART);
     timeToPrepare = sumTime(CART);
+
+    for (const ele of CART.showCart()) {
+      $headerCount += ele.quantity;
+    }
+    $('.cart-quantity').text($headerCount.toString())
 
     //append hidden modal
     $('#cart-rows').empty().append($buildCartTable(CART.showCart()))

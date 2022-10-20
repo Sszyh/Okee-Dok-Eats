@@ -1,18 +1,3 @@
-// testing
-
-const users = {
-  user1: {
-    id: "aJ48lW",
-    email: "user@example.com",
-    password: "123",
-  },
-  user2 :{
-    id: "user2RandomID",
-    email: "user2@example.com",
-    password: "123",
-  }
-};
-
 // load .env data into process.env
 require('dotenv').config();
 
@@ -54,6 +39,7 @@ const loginRoutes = require('./routes/login');
 const logoutRoute = require('./routes/logout');
 const menuRoute = require('./routes/menu');
 const orderRoute = require('./routes/order');
+const receiveSMS = require('./routes/receive-sms');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -68,6 +54,7 @@ app.use('/api/menu', listMenuByRestaurantAPI);
 app.use('/api/restaurant',restaurantAPI);
 app.use('/api/login', loginAPI);
 app.use('/order', orderRoute);
+app.use('/sms', receiveSMS);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -80,6 +67,7 @@ app.get('/', (req, res) => {
   }
   res.render('index', templateVars);
 });
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
