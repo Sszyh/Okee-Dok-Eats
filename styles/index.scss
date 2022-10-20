@@ -65,3 +65,15 @@ footer {
   border-radius: .5em;
   background-color: $accentOrange;
 }
+
+img {
+  position: relative;
+  animation: mymove 12s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes mymove {
+  0% {right: 0%;}
+  50%{right: 70%;}
+  100% {right: 0%;}
+}

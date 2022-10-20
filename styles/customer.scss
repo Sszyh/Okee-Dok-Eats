@@ -1,9 +1,12 @@
 @import './constant';
 
-//reset and adjust the ul
-section#restaurant-container {
+.login {
+  margin: 2em 42em 0 0;
+  font-size: 0.8em;
+}
 
-  margin-top: 2em;
+
+section#restaurant-container {
 
   @include flexOptions(space-evenly, center);
 
@@ -58,7 +61,12 @@ main {
   justify-content: space-evenly;
 }
 
-section#search {
+#restaurant-title {
+  font-family: $primaryFont;
+  font-size: 3em;
+  margin-bottom: 0em;
+}
+section.search {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,6 +80,7 @@ section#search {
       border-radius: 15%;
       color: $accentOrange;
       background-color: #9d0fa7c7;
+
       &:hover {background-color: #880f91c7}
 
       &:active {
@@ -79,10 +88,21 @@ section#search {
         box-shadow: 0 5px #666;
         transform: translateY(4px);
       }
+
     }
   }
 
   img {
-    padding: 2rem
+    padding: 3.5rem;
+    position: relative;
+    animation: mymove 12s infinite;
+    animation-timing-function: ease-in-out;
+
+    @keyframes mymove {
+      0% {transform: rotate(0deg)}
+      33%{transform: rotate(20deg)}
+      66% {transform: rotate(-20deg)}
+      100% {transform: rotate(0deg)}
+    }
   }
 }

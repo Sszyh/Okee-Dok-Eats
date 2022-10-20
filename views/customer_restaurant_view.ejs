@@ -9,12 +9,12 @@
   <header>
     <!-- for example -->
     <div class="login">Logged in as <%= users.id %></div>
-    <div class="cart">Cart</div>
-    <i class="fa-solid fa-cart-shopping"></i>
     </header>
   <main>
 <!-- search bar route will need to be updated in future-->
-<section id="search">
+
+<section class="search">
+<h1 id="restaurant-title">Restaurants:</h1>
   <form class="searchbar" action="/restaurants" method="GET" title="Restaurant Search">
     <input type="text"
     name="restaurant-search"
