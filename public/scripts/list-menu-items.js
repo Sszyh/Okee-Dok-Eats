@@ -57,3 +57,14 @@ $('.close-button').on("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
 /* MODAL END */
+
+
+let $loggedIn = $('#loggedIn')[0];
+$(window).scroll(function() {
+  if($('body').scrollTop > 10 || document.documentElement.scrollTop > 10) {
+    $($loggedIn).css('opacity', '0');
+  } else {
+    $($loggedIn).css('opacity', '1');
+  }
+})
+

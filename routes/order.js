@@ -34,16 +34,16 @@ router.post('/', async (req, res) => {
   total_price
   */
 
-/* try {
-  await sendMessage('Hello from Post', '+17782273501') //customer
-  await sendMessage('Hello from Post', '+17782273501') //restaurant
+try {
+  await sendMessage(`Your order has been place and will be ready in approximately ${totalTime} minutes. Thank you for chosing Okee-Dok-Eats!`, '+16045788964') //customer
+  // await sendMessage('Hello from Post', '+17782273501') //restaurant
   console.log("you have placed an order");
   res.send(`Your order was placed and will take this long`)
 } catch (error) {
   console.log(`There was an error`)
   res.send(`Maui will cry`)
 }
- */
+
 
 /* sendMessage('Hello from Post', '+17782273501').then(() => {
   console.log("you have placed an order");
