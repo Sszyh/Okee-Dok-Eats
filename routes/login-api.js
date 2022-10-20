@@ -13,14 +13,16 @@ router.post('/', (req, res) => {
   const isOwner = req.body.is_owner;
 
   const query = `
-  SELECT first_name FROM users
+  SELECT first_name, id FROM users
   WHERE first_name = $1;
   `;
   db.query(query, sqlParams)
     .then(data => {
       if (data.rows.length) {
-        const user = data.rows[0].first_name;
-        res.cookie('user_id', user);
+        const user_name = data.rows[0].first_name;
+        const user_id = data.rows[0].id;
+        res.cookie('user_id', user_id);
+        res.cookie('user_name', user_name);
       }
       if (isOwner === "on") {
         res.redirect('/restaurant');

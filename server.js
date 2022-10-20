@@ -6,7 +6,7 @@ const users = {
     email: "user@example.com",
     password: "123",
   },
-  user2 :{
+  user2: {
     id: "user2RandomID",
     email: "user2@example.com",
     password: "123",
@@ -74,7 +74,7 @@ app.use('/login', loginRoutes);
 app.use('/logout', logoutRoute);
 app.use('/menu', menuRoute);
 app.use('/api/menu', listMenuByRestaurantAPI);
-app.use('/api/restaurant',restaurantAPI);
+app.use('/api/restaurant', restaurantAPI);
 app.use('/api/login', loginAPI);
 
 app.use('/order', orderRoute);
@@ -87,8 +87,9 @@ app.use('/order', orderRoute);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  const templateVars ={
-    user: req.cookies.user_id
+  const templateVars = {
+    user_name: req.cookies.user_name,
+    user_id: req.cookies.user_id
   }
   res.render('index', templateVars);
 });
