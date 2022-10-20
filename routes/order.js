@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db/connection');
 const sendMessage = require('../public/scripts/send-sms.js');
+const mattNumber = process.env.TWILIO_MY_NUMBER;
+const gordNumber = process.env.TWILIO_GORD_NUMBER;
 
 router.post('/', async(req, res) => {
   const id = req.cookies.user_id;
@@ -36,6 +38,7 @@ router.post('/', async(req, res) => {
     })
     .then((res) => {
       console.log(res);
+      // res.json({ result })
     })
     .catch(err => {
       res
@@ -43,10 +46,9 @@ router.post('/', async(req, res) => {
         .json({ error: err.message });
     });
 
-
   try {
-    await sendMessage('Your order has been placed, please wait for the restaurant response', '+17782273501') //customer
-    await sendMessage('An order has been placed for Alice Max, see your web dashboard to view new Order. Please reply with the estimate time to prepare the order.', '+16045788964 ') //restaurant
+    await sendMessage('Your order has been placed, please wait for the restaurant response', `${mattNumber}`) //customer
+    await sendMessage('An order has been placed for Alice Max, see your web dashboard to view new Order. Please reply with the estimate time to prepare the order.', `${gordNumber}`) //restaurant
     console.log("you have placed an order");
     // res.send(`Your order was placed and will take this long`)
   } catch (error) {
@@ -54,21 +56,6 @@ router.post('/', async(req, res) => {
     // res.send(`Maui will cry`)
   }
 
-
-  /*
-  promise version
-
-  sendMessage('Hello from Post', '+17782273501').then(() => {
-    console.log("you have placed an order");
-    res.send(`Your order was placed and will take this long`)
-
-  }).catch(() => {
-    console.log(`There was an error`)
-    res.send(`Maui will cry`)
-  })
-
-
-   */
   res.status(200).send(totalTime);
 
 

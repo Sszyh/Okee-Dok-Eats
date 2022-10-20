@@ -1,6 +1,6 @@
-// testing
+/* THIS FILE NEEDS TO BE DELETED */// testing
 
-const users = {
+/* const users = {
   user1: {
     id: "aJ48lW",
     email: "user@example.com",
@@ -26,3 +26,4 @@ router.get('/', (req, res) => {
 });
 
 module.exports = router;
+ */

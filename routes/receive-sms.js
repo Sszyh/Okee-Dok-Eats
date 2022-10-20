@@ -2,6 +2,7 @@ const express = require('express');
 const sendMessage = require('../public/scripts/send-sms');
 const router = express.Router();
 const { MessagingResponse } = require('twilio').twiml;
+const mattNumber = process.env.TWILIO_MY_NUMBER;
 
 
 /* Twilio Receiving
@@ -15,16 +16,14 @@ router.post('/', async (req, res) => {
   const twiml = new MessagingResponse();
   //how to get customers phone number?
   //if user_id stored in cookie we can ask the db for it
-  //message received, how to send back to front end?
-  //or do we just send another message to customers phone and leave front end as is?
   console.log(req.body.Body); //message send
-  console.log(req.body.From); //number sent from?
+  console.log(req.body.From); //number sent from? this is the restaurant owner, not customer
 
   const messageFromOwner = req.body.Body;
-  // const customerPhone = (db query)
+  // const customerPhone = ( from db query)
 
   try {
-    await sendMessage(`'${messageFromOwner}'`, `'+17782273501'`) //send message back to customer's phone
+    await sendMessage(`'${messageFromOwner}'`, `${mattNumber}`) //send message back to customer's phone
     console.log('message sent to customers phone')
 
   } catch (error) {

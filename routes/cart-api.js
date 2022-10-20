@@ -1,11 +1,11 @@
-const express = require('express');
-const router  = express.Router();
-const db = require('../db/connection');
+// const express = require('express');
+// const router  = express.Router();
+// const db = require('../db/connection');
 
 /*
 Build Query here depending on the length of the cart, send this back as a JSON to the cartView.js file as 'res'
 */
-
+/*
 router.get('/', (req, res) => {
   const cartJObj = JSON.parse(req.query.cartJSON);
   const queryParams = [];
@@ -32,5 +32,5 @@ router.get('/', (req, res) => {
     });
 
 });
-
 module.exports = router;
+ */
