@@ -1,16 +1,4 @@
 // testing
-const users = {
-  user1: {
-    id: "aJ48lW",
-    email: "user@example.com",
-    password: "123",
-  },
-  user2 :{
-    id: "user2RandomID",
-    email: "user2@example.com",
-    password: "123",
-  }
-};
 
 // const restaurant = {
 //   id: 1,
@@ -25,15 +13,15 @@ const users = {
 
 // testing
 
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
 router.get('/', (req, res) => {
   // if the cookie is set render this page view
   // else redirect to home page
 
   if (!req.cookies.user_id) {
-    return res.status(401).redirect('/')
+    return res.status(401).redirect('/');
   }
   //jQuery to display all restaurants
 
@@ -45,7 +33,7 @@ router.get('/', (req, res) => {
     user_name: req.cookies.user_name
   }
 
-  res.render('customer_restaurant_view', templateVars)
+  res.render('customer_restaurant_view', templateVars);
 });
 
 module.exports = router;

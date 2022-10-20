@@ -1,24 +1,24 @@
-const express = require('express');
-const router  = express.Router();
-const db = require('../db/connection');
+// const express = require('express');
+// const router  = express.Router();
+// const db = require('../db/connection');
 
 /*
 Build Query here depending on the length of the cart, send this back as a JSON to the cartView.js file as 'res'
 */
-
+/*
 router.get('/', (req, res) => {
-const cartJObj = JSON.parse(req.query.cartJSON);
-const queryParams = [];
+  const cartJObj = JSON.parse(req.query.cartJSON);
+  const queryParams = [];
 
-let query = `
+  let query = `
   SELECT * FROM menu_items
   WHERE
   `;
 
-for (const ele of cartJObj) {
-  queryParams.push(ele.menuItemId)
-  query += `id = $${queryParams.length}${queryParams.length === cartJObj.length ? `;` : ` OR `}`;
-}
+  for (const ele of cartJObj) {
+    queryParams.push(ele.menuItemId);
+    query += `id = $${queryParams.length}${queryParams.length === cartJObj.length ? `;` : ` OR `}`;
+  }
 
   db.query(query, queryParams)
     .then(data => {
@@ -32,5 +32,5 @@ for (const ele of cartJObj) {
     });
 
 });
-
 module.exports = router;
+ */

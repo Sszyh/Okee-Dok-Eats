@@ -1,5 +1,5 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
 router.get('/', (req, res) => {
 
@@ -7,6 +7,6 @@ router.get('/', (req, res) => {
   res.clearCookie('user_name');
   res.clearCookie('restaurant_id');
   res.redirect('/');
-})
+});
 
-module.exports = router
+module.exports = router;
