@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/connection');
-const sendMessage = require('../public/scripts/send-sms.js')
+const sendMessage = require('../public/scripts/send-sms.js');
 
-router.post('/', async (req, res) => {
+router.post('/', async(req, res) => {
   const id = req.cookies.user_id;
   console.log(req.body);
-  const { orderItems, orderPlaced, restaurantId, total, totalTime, totalTax } = req.body
+  const { orderItems, orderPlaced, restaurantId, total, totalTime, totalTax } = req.body;
   const queryParams = [
     restaurantId,
     4, //in future userid from cookie
@@ -15,13 +15,13 @@ router.post('/', async (req, res) => {
     orderPlaced,
     total,
     totalTax
-  ]
+  ];
 
   let sql = `
   INSERT INTO orders
    (restaurant_id,customer_id,rating,review,order_placed,subtotal,total_price)
   VALUES ($1, $2, $3, $4, $5, $6, $7)
-  RETURNING *;`
+  RETURNING *;`;
   db.query(sql, queryParams)
     .then((sqlResponse) => {
       console.log(sqlResponse.rows);
@@ -29,10 +29,10 @@ router.post('/', async (req, res) => {
       orderItems.forEach(e => {
         const pivotPromise = db.query(
           `INSERT INTO orders_menu_items (menu_item_id,order_id) VALUES ($1, $2);`,
-          [e.menuItemId, sqlResponse.rows[0].id])
+          [e.menuItemId, sqlResponse.rows[0].id]);
         promises.push(pivotPromise);
-      })
-      return Promise.all(promises)
+      });
+      return Promise.all(promises);
     })
     .then((res) => {
       console.log(res);
@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
         .json({ error: err.message });
     });
 
-/*
+  /*
   1. insert into orders table
     *RETURNING*
   2. .then() sqlResponse.id is the newly created orders table ID
@@ -71,7 +71,7 @@ router.post('/', async (req, res) => {
     res.send(`Maui will cry`)
   })
    */
-  res.status(200).send(totalTime)
+  res.status(200).send(totalTime);
 
 
 });

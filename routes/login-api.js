@@ -6,9 +6,9 @@ const express = require('express');
 const router  = express.Router();
 const db = require('../db/connection');
 
-router.get('/', (req, res) => {
-  const loginName = req.cookies.user_id.name
-  const sqlParams = [`${loginName}`]
+router.post('/', (req, res) => {
+  const { userFirstName } = req.body;
+  const sqlParams = [`${userFirstName}`];
 
   const query = `
   SELECT * FROM users
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
   db.query(query, sqlParams)
     .then(data => {
       const user = data.rows;
-      res.send('/').json({ user })
+      res.json({ user });
     })
     .catch(err => {
       res

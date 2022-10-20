@@ -10,14 +10,14 @@ const restaurant = {
   address: '651 Nami Road',
   review:'like to go everyday',
   rating: 4.5
-}
+};
 
 router.get('/', (req, res) => {
   const templateVars = {
     restaurant: restaurant.name
-  }
+  };
 
   res.render('restaurant',templateVars);
-})
+});
 
 module.exports = router;

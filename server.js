@@ -44,30 +44,21 @@ app.use(cookieParser())
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const userApiRoutes = require('./routes/users-api');
-const widgetApiRoutes = require('./routes/widgets-api');
 const customerRestaurantAPI = require('./routes/customer-view-api');
 const listMenuByRestaurantAPI = require('./routes/menu-api');
 const loginAPI = require('./routes/login-api');
-// const cartAPI = require('./routes/cart-api');
-const usersRoutes = require('./routes/users');
 const customerRoutes = require('./routes/customer-view');
 const restaurantRoutes = require('./routes/restaurant');
 const restaurantAPI = require('./routes/restaurant-api');
 const loginRoutes = require('./routes/login');
 const logoutRoute = require('./routes/logout');
 const menuRoute = require('./routes/menu');
-const orderRoute = require('./routes/order')
-
-// const cartRoute = require('./routes/cart');
+const orderRoute = require('./routes/order');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/api/users', userApiRoutes);
-app.use('/api/widgets', widgetApiRoutes);
 app.use('/api/customer', customerRestaurantAPI);
-app.use('/users', usersRoutes);
 app.use('/customer', customerRoutes);
 app.use('/restaurant', restaurantRoutes);
 app.use('/login', loginRoutes);
@@ -76,10 +67,7 @@ app.use('/menu', menuRoute);
 app.use('/api/menu', listMenuByRestaurantAPI);
 app.use('/api/restaurant',restaurantAPI);
 app.use('/api/login', loginAPI);
-
 app.use('/order', orderRoute);
-// app.use('/cart', cartRoute);
-// app.use('/api/cart', cartAPI);
 // Note: mount other resources here, using the same pattern above
 
 // Home page

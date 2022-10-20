@@ -13,16 +13,16 @@ const users = {
   }
 };
 
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 router.get('/', (req, res) => {
   const templateVars = {
     users: users[req.cookies.user_id]
-  }
+  };
 
-  console.log('display cart page')
+  console.log('display cart page');
 
   res.render('cart', templateVars);
-})
+});
 
-module.exports = router
+module.exports = router;
