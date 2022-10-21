@@ -11,7 +11,7 @@ router.post('/', async(req, res) => {
   const { orderItems, orderPlaced, restaurantId, total, totalTime, totalTax } = req.body;
   const queryParams = [
     restaurantId,
-    4, //in future userid from cookie
+    1, //in future userid from cookie
     3,
     "Quickly Prepared Order",
     orderPlaced,
@@ -46,7 +46,7 @@ router.post('/', async(req, res) => {
         .json({ error: err.message });
     });
 
-  try {
+  /* try {
     await sendMessage('Your order has been placed, please wait for the restaurant response', `${customerNumber}`) //customer
     await sendMessage('An order has been placed, see your web dashboard to view new Order. Please reply with the estimate time to prepare the order.', `${ownerNumber}`) //restaurant
     console.log("you have placed an order");
@@ -54,7 +54,7 @@ router.post('/', async(req, res) => {
   } catch (error) {
     console.log(`There was an error`)
     // res.send(`Maui will cry`)
-  }
+  } */
 
   res.status(200).send(totalTime);
 

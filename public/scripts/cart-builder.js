@@ -26,7 +26,6 @@ $(document).on('click', '#clear-cart', function () {
 // used this as a template idea plus help from mentor!
 // https://codepen.io/titanean/pen/PGXPNq
 $(document).on('click', '.increment', function (e) {
-  // console.log(e.currentTarget);
   const $btnUp = e.currentTarget.value;
   let counter = $(`.counter.id-${$btnUp}`).val();
   counter = parseInt(counter) + 1
@@ -52,10 +51,10 @@ let subTotal = 0;
 let timeToPrepare = 0;
 $(document).on('click', '#remove-from-cart', function (e) {
   const $id = e.target.value;
-  let $headerCount = parseInt($('.cart-quantity').text())
+  $(`.counter.id-${$id}`).val('0') //set counter to 0
   CART.removeItem(parseInt($id))
   CART.saveCart();
-  const newQuantity = CART.cartItems.reduce((acc, obj) => {return acc + obj.quantity }, 0);
+  const newQuantity = CART.cartItems.reduce((acc, obj) => {return acc + obj.quantity }, 0); // calculate new quantity from the new cart obj
   $('.cart-quantity').text(newQuantity.toString())
 
   if (CART.showCart().length !== 0) {
