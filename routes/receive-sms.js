@@ -2,7 +2,7 @@ const express = require('express');
 const sendMessage = require('../public/scripts/send-sms');
 const router = express.Router();
 const { MessagingResponse } = require('twilio').twiml;
-const mattNumber = process.env.TWILIO_MY_NUMBER;
+const customerNumber = process.env.TWILIO_CUSTOMER_NUMBER;
 
 
 /* Twilio Receiving
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
   // const customerPhone = ( from db query)
 
   try {
-    await sendMessage(`'${messageFromOwner}'`, `${mattNumber}`) //send message back to customer's phone
+    await sendMessage(`'${messageFromOwner}'`, `${customerNumber}`) //send message back to customer's phone
     console.log('message sent to customers phone')
 
   } catch (error) {
