@@ -2,7 +2,6 @@ const db = require('../connection');
 
 const getOrderList = (restId) => {
 
-console.log("restid",restId)
   return db.query(`
   SELECT o.id, o.customer_id,u.first_name,u.last_name,u.phone_number, o.order_placed,mi.item
   FROM users u
@@ -14,7 +13,6 @@ console.log("restid",restId)
 
   `)
     .then(data => {
-      console.log("data",data.rows)
       return data.rows;
     });
 };
