@@ -1,5 +1,5 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const db = require('../db/connection');
 
 router.get('/', (req, res) => {
@@ -7,7 +7,9 @@ router.get('/', (req, res) => {
   const restaurantId = req.query.id;
   const sqlParams = [`${restaurantId}`];
   const query = `
-  SELECT * FROM menu_items
+  SELECT mi.id, mi.menu_id, mi.item, mi.price, mi.time_to_prepare, mi.item_description,mi.item_photo_url, r.name
+  FROM menu_items mi
+  JOIN restaurants r ON r.id=mi.menu_id
   WHERE menu_id = $1;
   `;
   db.query(query, sqlParams)

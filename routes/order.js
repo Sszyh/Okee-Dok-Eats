@@ -48,7 +48,7 @@ router.post('/', async(req, res) => {
 
   try {
     await sendMessage('Your order has been placed, please wait for the restaurant response', `${customerNumber}`) //customer
-    await sendMessage('An order has been placed for Alice Max, see your web dashboard to view new Order. Please reply with the estimate time to prepare the order.', `${ownerNumber}`) //restaurant
+    await sendMessage('An order has been placed, see your web dashboard to view new Order. Please reply with the estimate time to prepare the order.', `${ownerNumber}`) //restaurant
     console.log("you have placed an order");
     // res.send(`Your order was placed and will take this long`)
   } catch (error) {
