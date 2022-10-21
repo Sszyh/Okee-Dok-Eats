@@ -1,18 +1,3 @@
-// testing
-
-const users = {
-  user1: {
-    id: "aJ48lW",
-    email: "user@example.com",
-    password: "123",
-  },
-  user2: {
-    id: "user2RandomID",
-    email: "user2@example.com",
-    password: "123",
-  }
-};
-
 // load .env data into process.env
 require('dotenv').config();
 
@@ -44,30 +29,22 @@ app.use(cookieParser())
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const userApiRoutes = require('./routes/users-api');
-const widgetApiRoutes = require('./routes/widgets-api');
 const customerRestaurantAPI = require('./routes/customer-view-api');
 const listMenuByRestaurantAPI = require('./routes/menu-api');
 const loginAPI = require('./routes/login-api');
-// const cartAPI = require('./routes/cart-api');
-const usersRoutes = require('./routes/users');
 const customerRoutes = require('./routes/customer-view');
 const restaurantRoutes = require('./routes/restaurant');
 const restaurantAPI = require('./routes/restaurant-api');
 const loginRoutes = require('./routes/login');
 const logoutRoute = require('./routes/logout');
 const menuRoute = require('./routes/menu');
-const orderRoute = require('./routes/order')
-
-// const cartRoute = require('./routes/cart');
+const orderRoute = require('./routes/order');
+const receiveSMS = require('./routes/receive-sms');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/api/users', userApiRoutes);
-app.use('/api/widgets', widgetApiRoutes);
 app.use('/api/customer', customerRestaurantAPI);
-app.use('/users', usersRoutes);
 app.use('/customer', customerRoutes);
 app.use('/restaurant', restaurantRoutes);
 app.use('/login', loginRoutes);
@@ -76,10 +53,8 @@ app.use('/menu', menuRoute);
 app.use('/api/menu', listMenuByRestaurantAPI);
 app.use('/api/restaurant', restaurantAPI);
 app.use('/api/login', loginAPI);
-
 app.use('/order', orderRoute);
-// app.use('/cart', cartRoute);
-// app.use('/api/cart', cartAPI);
+app.use('/sms', receiveSMS);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -93,6 +68,7 @@ app.get('/', (req, res) => {
   }
   res.render('index', templateVars);
 });
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

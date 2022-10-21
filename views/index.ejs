@@ -3,6 +3,7 @@
 
 <head>
   <%- include('partials/_headData') %>
+<script defer src="/scripts/app.js"></script>
   <link rel="stylesheet" href="/styles/index.css" />
 </head>
 
@@ -17,15 +18,14 @@
         <button class="nav-buttons" type="submit">Logout</button>
       </form>
     <% } else{ %>
-    <button type="signup" class="nav-buttons">Sign Up</button>
-    <input type="text" id="password" name="password" placeholder="Password">
+
     <form action="/api/login" method="POST">
       <button id="login" type="login" name="login" class="nav-buttons">Login</button>
       <input type="text" id="name" name="name" placeholder="Name">
       <input type="checkbox" id="is_owner" name="is_owner" >Is Owner</input>
-
     </form>
-
+    <button type="signup" class="nav-buttons">Sign Up</button>
+    <input type="text" id="password" name="password" placeholder="Password">
   <% } %>
   </div>
 </nav>
