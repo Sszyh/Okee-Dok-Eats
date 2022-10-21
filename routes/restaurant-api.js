@@ -3,7 +3,7 @@ const router  = express.Router();
 
 const orderList = require('../db/queries/order-list');
 router.get('/', (req, res) => {
-console.log("re",req.query)
+
   orderList.getOrderList(req.cookies.restaurant_id)
 
 

@@ -7,7 +7,7 @@ const ownerNumber = process.env.TWILIO_OWNER_NUMBER;
 
 router.post('/', async(req, res) => {
   const id = req.cookies.user_id;
-  console.log(req.body);
+
   const { orderItems, orderPlaced, restaurantId, total, totalTime, totalTax } = req.body;
   const queryParams = [
     restaurantId,
@@ -26,7 +26,7 @@ router.post('/', async(req, res) => {
   RETURNING *;`;
   db.query(sql, queryParams)
     .then((sqlResponse) => {
-      console.log(sqlResponse.rows);
+
       const promises = [];
       orderItems.forEach(e => {
         const pivotPromise = db.query(
@@ -37,7 +37,7 @@ router.post('/', async(req, res) => {
       return Promise.all(promises);
     })
     .then((res) => {
-      console.log(res);
+      //console.log(res);
       // res.json({ result })
     })
     .catch(err => {
