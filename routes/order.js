@@ -11,7 +11,7 @@ router.post('/', async(req, res) => {
   const { orderItems, orderPlaced, restaurantId, total, totalTime, totalTax } = req.body;
   const queryParams = [
     restaurantId,
-    4, //in future userid from cookie
+    1, //in future userid from cookie
     3,
     "Quickly Prepared Order",
     orderPlaced,

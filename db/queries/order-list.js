@@ -9,7 +9,7 @@ const getOrderList = (restId) => {
   JOIN orders_menu_items omi ON omi.order_id=o.id
   JOIN menu_items mi ON mi.id= omi.menu_item_id
   WHERE o.restaurant_id = ${restId}
-  ORDER BY order_placed;
+  ORDER BY order_placed DESC;
 
   `)
     .then(data => {
