@@ -5,6 +5,8 @@ This Midterm project was build by [Gord Letkeman](https://github.com/rndedg), [S
 
 A food ordering experience for a single restaurant. Hungry customers can visit a restaurants menu, select one or more dishes and place an order for pick-up. They will receive a notification when their order is ready.
 
+🎬 Head [here 🎥 🎥 🎥](https://www.youtube.com/watch?v=fP03ytSx1Yw) to view the presentation of our app during the July 11th Cohort midterm presentations at LHL! 🎬
+
 ## Getting Started
 
 *Git clone the repo onto your local machine.*
